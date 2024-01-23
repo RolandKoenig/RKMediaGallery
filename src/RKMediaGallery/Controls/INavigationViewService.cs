@@ -19,4 +19,8 @@ public interface INavigationViewService
     bool IsCurrentlyOn<TViewModel>();
 
     bool IsCurrentlyOnAnyView();
+
+    void NavigateBack();
+
+    bool CanNavigationBack();
 }

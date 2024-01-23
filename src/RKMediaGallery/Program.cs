@@ -1,9 +1,11 @@
 ﻿using Avalonia;
 using System;
+using RKMediaGallery.Views;
+using RolandK.AvaloniaExtensions.DependencyInjection;
 
 namespace RKMediaGallery;
 
-class Program
+public static class Program
 {
     // Initialization code. Don't use any Avalonia, third-party APIs or any
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
@@ -13,9 +15,15 @@ class Program
         .StartWithClassicDesktopLifetime(args);
 
     // Avalonia configuration, don't remove; also used by visual designer.
+    // ReSharper disable once MemberCanBePrivate.Global
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
-            .LogToTrace();
+            .LogToTrace()
+            .UseDependencyInjection(services =>
+            {
+
+                services.AddViewModels();
+            });
 }

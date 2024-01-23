@@ -29,4 +29,14 @@ internal class NavigationViewService(NavigationControl navigationControl) : View
     {
         return navigationControl.IsCurrentlyOnAnyView();
     }
+    
+    public bool CanNavigationBack()
+    {
+        return navigationControl.CanNavigateBack();
+    }
+
+    public void NavigateBack()
+    {
+        navigationControl.NavigateBack();
+    }
 }

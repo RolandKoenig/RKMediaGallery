@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Avalonia;
 using Microsoft.Extensions.DependencyInjection;
 using RolandK.AvaloniaExtensions.DependencyInjection;
@@ -7,6 +8,8 @@ namespace RKMediaGallery.Controls;
 
 public partial class NavigationControl : ViewServiceHostUserControl
 {
+    private Stack<NavigationHistoryItem> _historyItems = new();
+    
     public string CurrentViewTitle
     {
         get
@@ -30,10 +33,11 @@ public partial class NavigationControl : ViewServiceHostUserControl
         var viewModel = serviceProvider.GetRequiredService<TViewModel>();
         viewModel.OnReceiveParameterFromNavigation(argument);
         
-        var viewObject = TViewModel.CreateViewInstance();
+        var viewObject = viewModel.CreateViewInstance();
         viewObject.DataContext = viewModel;
         
         this.CtrlTransition.Content = viewObject;
+        _historyItems.Push(new NavigationHistoryItem(viewModel));
     }
     
     public void NavigateTo<TViewModel>()
@@ -43,10 +47,11 @@ public partial class NavigationControl : ViewServiceHostUserControl
         
         var viewModel = serviceProvider.GetRequiredService<TViewModel>();
         
-        var viewObject = TViewModel.CreateViewInstance();
+        var viewObject = viewModel.CreateViewInstance();
         viewObject.DataContext = viewModel;
         
         this.CtrlTransition.Content = viewObject;
+        _historyItems.Push(new NavigationHistoryItem(viewModel));
     }
 
     public bool IsCurrentlyOn<TViewModel>()
@@ -61,5 +66,33 @@ public partial class NavigationControl : ViewServiceHostUserControl
     public bool IsCurrentlyOnAnyView()
     {
         return this.CtrlTransition.Content != null;
+    }
+
+    public void NavigateBack()
+    {
+        if (!this.CanNavigateBack()) { return; }
+
+        _historyItems.Pop();
+        if (!_historyItems.TryPop(out var viewModel))
+        {
+            return;
+        }
+
+        if (viewModel is not INavigationTarget viewModelNavTarget)
+        {
+            return;
+        }
+        
+        var serviceProvider = this.GetServiceProvider();
+        
+        var viewObject = viewModelNavTarget.CreateViewInstance();
+        viewObject.DataContext = viewModel;
+        
+        this.CtrlTransition.Content = viewObject;
+    }
+
+    public bool CanNavigateBack()
+    {
+        return _historyItems.Count > 1;
     }
 }
