@@ -13,6 +13,11 @@ internal class NavigationViewService(NavigationControl navigationControl) : View
         navigationControl.NavigateTo<TViewModel, TNavigationArgument>(argument);
     }
 
+    public void NavigateTo(INavigationTarget targetViewModel)
+    {
+        navigationControl.NavigateTo(targetViewModel);
+    }
+
     /// <inheritdoc />
     public void NavigateTo<TViewModel>() where TViewModel : INavigationTarget
     {

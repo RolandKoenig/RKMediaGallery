@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using System;
+using Microsoft.Extensions.DependencyInjection;
 using RKMediaGallery.Views;
 using RolandK.AvaloniaExtensions.DependencyInjection;
 
@@ -23,7 +24,7 @@ public static class Program
             .LogToTrace()
             .UseDependencyInjection(services =>
             {
-
                 services.AddViewModels();
+                services.AddTransient<MainWindowViewModel>();
             });
 }

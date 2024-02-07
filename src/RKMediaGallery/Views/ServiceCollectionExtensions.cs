@@ -6,6 +6,6 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddViewModels(this IServiceCollection services)
     {
-        return services.AddTransient<HomeViewModel>();
+        return services;
     }
 }

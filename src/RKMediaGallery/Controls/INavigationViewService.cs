@@ -3,6 +3,11 @@
 public interface INavigationViewService
 {
     string CurrentViewTitle { get; }
+
+    /// <summary>
+    /// Navigates to the given ViewModel.
+    /// </summary>
+    void NavigateTo(INavigationTarget targetViewModel);
     
     /// <summary>
     /// Navigates to the given viewmodel. 

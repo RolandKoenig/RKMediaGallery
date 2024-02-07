@@ -3,12 +3,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ext="https://github.com/RolandK.AvaloniaExtensions"
+        xmlns:controls="clr-namespace:RKMediaGallery.Controls"
         xmlns:local="clr-namespace:RKMediaGallery"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RKMediaGallery.MainWindow"
+        x:DataType="local:MainWindowViewModel"
         d:DataContext="{x:Static local:MainWindowViewModel.EmptyViewModel}"
         ViewFor="{x:Type local:MainWindowViewModel}"
         DataContext="{ext:CreateUsingDependencyInjection {x:Type local:MainWindowViewModel}}"
         Title="RK MediaGallery">
-   
+        
+    <Panel>
+        <controls:NavigationControl x:Name="CtrlNavigation" />
+        
+        <Button Command="{Binding Path=SelectMediaDirectoryAndStartCommand}"
+                Content="Start with directory" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+    </Panel>
+        
 </ext:MvvmWindow>

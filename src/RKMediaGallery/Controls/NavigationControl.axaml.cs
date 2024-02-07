@@ -25,6 +25,15 @@ public partial class NavigationControl : ViewServiceHostUserControl
         this.InitializeComponent();
     }
 
+    public void NavigateTo(INavigationTarget viewModel)
+    {
+        var viewObject = viewModel.CreateViewInstance();
+        viewObject.DataContext = viewModel;
+        
+        this.CtrlTransition.Content = viewObject;
+        _historyItems.Push(new NavigationHistoryItem(viewModel));
+    }
+
     public void NavigateTo<TViewModel, TNavigationArgument>(TNavigationArgument argument)
         where TViewModel : INavigationTarget, INavigationDataReceiver<TNavigationArgument>
     {
@@ -32,12 +41,8 @@ public partial class NavigationControl : ViewServiceHostUserControl
         
         var viewModel = serviceProvider.GetRequiredService<TViewModel>();
         viewModel.OnReceiveParameterFromNavigation(argument);
-        
-        var viewObject = viewModel.CreateViewInstance();
-        viewObject.DataContext = viewModel;
-        
-        this.CtrlTransition.Content = viewObject;
-        _historyItems.Push(new NavigationHistoryItem(viewModel));
+
+        this.NavigateTo(viewModel);
     }
     
     public void NavigateTo<TViewModel>()
@@ -46,12 +51,8 @@ public partial class NavigationControl : ViewServiceHostUserControl
         var serviceProvider = this.GetServiceProvider();
         
         var viewModel = serviceProvider.GetRequiredService<TViewModel>();
-        
-        var viewObject = viewModel.CreateViewInstance();
-        viewObject.DataContext = viewModel;
-        
-        this.CtrlTransition.Content = viewObject;
-        _historyItems.Push(new NavigationHistoryItem(viewModel));
+
+        this.NavigateTo(viewModel);
     }
 
     public bool IsCurrentlyOn<TViewModel>()
