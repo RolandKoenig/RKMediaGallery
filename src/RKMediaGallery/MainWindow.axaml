@@ -12,14 +12,5 @@
         ViewFor="{x:Type local:MainWindowViewModel}"
         DataContext="{ext:CreateUsingDependencyInjection {x:Type local:MainWindowViewModel}}"
         Title="RK MediaGallery">
-        
-    <Panel>
-        <controls:NavigationControl x:Name="CtrlNavigation" />
-        
-        <Button Command="{Binding Path=SelectMediaDirectoryAndStartCommand}"
-                Content="Start with directory" 
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"/>
-    </Panel>
-        
+    <controls:NavigationControl x:Name="CtrlNavigation" />
 </ext:MvvmWindow>

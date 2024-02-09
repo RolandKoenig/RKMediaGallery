@@ -1,0 +1,16 @@
+<ext:MvvmUserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ext="https://github.com/RolandK.AvaloniaExtensions"
+             xmlns:local="clr-namespace:RKMediaGallery.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RKMediaGallery.Views.HomeView"
+             ViewFor="{x:Type local:HomeViewModel}">
+    <Panel>
+        <Button Command="{Binding Path=SelectMediaDirectoryAndStartCommand}"
+                Content="Start with directory" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+    </Panel>
+</ext:MvvmUserControl>

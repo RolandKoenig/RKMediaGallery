@@ -1,4 +1,6 @@
+using Avalonia.Interactivity;
 using RKMediaGallery.Controls;
+using RKMediaGallery.Views;
 using RolandK.AvaloniaExtensions.Mvvm.Controls;
 
 namespace RKMediaGallery;
@@ -10,5 +12,6 @@ public partial class MainWindow : MvvmWindow
         InitializeComponent();
         
         this.ViewServices.Add(new NavigationViewService(this.CtrlNavigation));
+        this.CtrlNavigation.NavigateTo<HomeViewModel>();
     }
 }

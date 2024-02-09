@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Avalonia.Controls;
 using RKMediaGallery.Controls;
@@ -7,6 +8,8 @@ namespace RKMediaGallery.Views;
 
 public class NavigationViewModel : OwnViewModelBase, INavigationTarget
 {
+    public static readonly NavigationViewModel EmptyViewModel = new("", Array.Empty<string>());
+    
     public string Title { get; }
     
     public NavigationViewModel(
