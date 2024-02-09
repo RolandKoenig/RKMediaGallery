@@ -3,9 +3,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ext="https://github.com/RolandK.AvaloniaExtensions"
+             xmlns:controls="clr-namespace:RKMediaGallery.Controls"
              xmlns:local="clr-namespace:RKMediaGallery.Views"
+             xmlns:localUtil="clr-namespace:RKMediaGallery.Views.Navigation"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RKMediaGallery.Views.NavigationView"
-             ViewFor="{x:Type local:NavigationViewModel}">
-    <TextBlock>Navigation View</TextBlock>
+             ViewFor="{x:Type local:NavigationViewModel}"
+             d:DataContext="{x:Static local:NavigationViewModel.EmptyViewModel}">
+    <ScrollViewer HorizontalScrollBarVisibility="Visible"
+                  VerticalScrollBarVisibility="Hidden">
+        <ItemsControl ItemsSource="{Binding Path=Subdirectories}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" MaxHeight="800" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type localUtil:SubdirectoryInfo}">
+                    <controls:ThumbnailViewerControl Thumbnails="{Binding Path=Thumbnails}"
+                                                     TitleText="{Binding Path=Name}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ScrollViewer>
 </ext:MvvmUserControl>

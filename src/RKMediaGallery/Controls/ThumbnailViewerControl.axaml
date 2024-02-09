@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RKMediaGallery.Controls.ThumbnailViewerControl">
+    <Panel>
+        <TransitioningContentControl x:Name="CtrlTransition">
+            <TransitioningContentControl.PageTransition>
+                <CrossFade Duration="0.5" />
+            </TransitioningContentControl.PageTransition>
+        </TransitioningContentControl>
+        
+        <Rectangle VerticalAlignment="Bottom"
+                   Height="45"
+                   Margin="20,0,20,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="500,0">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0" Color="#3300CCFF" />
+                        <GradientStop Offset="0.05" Color="#FF00CCFF" />
+                        <GradientStop Offset="0.95" Color="#FF00CCFF" />
+                        <GradientStop Offset="1" Color="#3300CCFF" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        <TextBlock x:Name="CtrlTitleText" 
+                   VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Center"
+                   Height="40"
+                   Margin="20,0,20,0"
+                   FontSize="26" 
+                   Foreground="White"
+                   Text="-" />
+    </Panel>
+</UserControl>
