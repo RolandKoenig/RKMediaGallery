@@ -1,3 +1,4 @@
+using Avalonia.Media;
 using RKMediaGallery.Controls;
 using RKMediaGallery.Views;
 using RolandK.AvaloniaExtensions.Mvvm.Controls;

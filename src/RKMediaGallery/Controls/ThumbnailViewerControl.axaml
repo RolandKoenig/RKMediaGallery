@@ -13,7 +13,7 @@
         
         <Rectangle VerticalAlignment="Bottom"
                    Height="45"
-                   Margin="20,0,20,0">
+                   Margin="20">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="500,0">
                     <LinearGradientBrush.GradientStops>
@@ -30,7 +30,7 @@
                    VerticalAlignment="Bottom" 
                    HorizontalAlignment="Center"
                    Height="40"
-                   Margin="20,0,20,0"
+                   Margin="20"
                    FontSize="26" 
                    Foreground="White"
                    Text="-" />

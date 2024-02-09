@@ -12,5 +12,14 @@
         ViewFor="{x:Type local:MainWindowViewModel}"
         DataContext="{ext:CreateUsingDependencyInjection {x:Type local:MainWindowViewModel}}"
         Title="RK MediaGallery">
-    <controls:NavigationControl x:Name="CtrlNavigation" />
+    
+    <Panel>
+        <controls:NavigationControl x:Name="CtrlNavigation" />
+        
+        <Panel.Background>
+           <ImageBrush Source="avares://RKMediaGallery/Assets/Background.png"
+                       Stretch="Fill"/> 
+        </Panel.Background>
+    </Panel>
+    
 </ext:MvvmWindow>

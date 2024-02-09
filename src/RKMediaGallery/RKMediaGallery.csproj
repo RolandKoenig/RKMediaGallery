@@ -19,4 +19,9 @@
         <PackageReference Include="RolandK.AvaloniaExtensions" Version="2.0.4" />
         <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="2.0.4" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="Assets\Background.png" />
+      <AvaloniaResource Include="Assets\Background.png" />
+    </ItemGroup>
 </Project>
