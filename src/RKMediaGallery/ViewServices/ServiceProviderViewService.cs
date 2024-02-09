@@ -6,8 +6,14 @@ using RolandK.AvaloniaExtensions.ViewServices.Base;
 
 namespace RKMediaGallery.ViewServices;
 
-public class UseCaseViewService(IResourceHost resourceHost) : ViewServiceBase, IUseCaseViewService
+public class ServiceProviderViewService(IResourceHost resourceHost) : ViewServiceBase, IServiceProviderViewService
 {
+    public void GetService<TService>(out TService service) where TService : notnull
+    {
+        var serviceProvider = resourceHost.GetServiceProvider();
+        service = serviceProvider.GetRequiredService<TService>();
+    }
+
     public IDisposable GetScopedUseCase<TUseCase>(out TUseCase useCase) 
         where TUseCase : notnull
     {

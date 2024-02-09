@@ -6,7 +6,25 @@
              xmlns:local="clr-namespace:RKMediaGallery.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RKMediaGallery.Views.ImageCollectionView"
+             d:DataContext="{x:Static local:ImageCollectionViewModel.EmptyViewModel}"
              ViewFor="{x:Type local:ImageCollectionViewModel}">
-    Image Collection
+    <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                  HorizontalScrollBarVisibility="Visible">
+        <ItemsControl ItemsSource="{Binding Path=LoadedBitmaps}"
+                      MaxHeight="{Binding Path=ViewMaxHeight}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.DataTemplates>
+                <DataTemplate DataType="Bitmap">
+                    <Image Source="{Binding}"
+                           Stretch="UniformToFill"
+                           Margin="20,0,20,0" />
+                </DataTemplate>
+            </ItemsControl.DataTemplates>
+        </ItemsControl>
+    </ScrollViewer>
 </ext:MvvmUserControl>
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using RKMediaGallery.Views;
 using RolandK.AvaloniaExtensions.DependencyInjection;
+using RolandK.InProcessMessaging;
 
 namespace RKMediaGallery;
 
@@ -24,6 +25,10 @@ public static class Program
             .LogToTrace()
             .UseDependencyInjection(services =>
             {
+                var inProcessMessenger = new InProcessMessenger();
+                services.AddSingleton<IInProcessMessageSubscriber>(_ => inProcessMessenger);
+                services.AddSingleton<IInProcessMessagePublisher>(_ => inProcessMessenger);
+                
                 services.AddViewModels();
                 services.AddTransient<MainWindowViewModel>();
             });

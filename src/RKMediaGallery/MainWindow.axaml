@@ -20,6 +20,8 @@
                     Orientation="Horizontal">
             <Button Content="Back"
                     Command="{Binding Path=NavigateBackCommand}" />
+            <Button Content="Exit"
+                    Command="{Binding Path=ExitCommand}" />
         </StackPanel>
         
         <Panel.Background>

@@ -9,6 +9,7 @@
              d:DataContext="{x:Static local:ThumbnailButtonViewModel.EmptyViewModel}"
              ViewFor="{x:Type local:ThumbnailButtonViewModel}">
     <Button Background="Transparent"
+            BorderThickness="0"
             Command="{Binding Path=NavigateToSubdirectoryCommand}">
         <Panel>
             <TransitioningContentControl x:Name="CtrlTransition">

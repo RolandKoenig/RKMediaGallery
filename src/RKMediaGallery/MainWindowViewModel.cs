@@ -14,4 +14,10 @@ public partial class MainWindowViewModel : OwnViewModelBase
         var srvNavigation = base.GetViewService<INavigationViewService>();
         srvNavigation.NavigateBack();
     }
+
+    [RelayCommand]
+    private void Exit()
+    {
+        base.CloseHostWindow();
+    }
 }

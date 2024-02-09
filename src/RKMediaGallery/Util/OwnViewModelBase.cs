@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using CommunityToolkit.Mvvm.ComponentModel;
 using RKMediaGallery.ViewServices;
 using RolandK.AvaloniaExtensions.Mvvm;
 using RolandK.AvaloniaExtensions.ViewServices.Base;
+using RolandK.InProcessMessaging;
 
 namespace RKMediaGallery.Util;
 
 public class OwnViewModelBase : ObservableObject, IAttachableViewModel
 {
     private object? _associatedView;
+    private IEnumerable<MessageSubscription>? _messageSubscriptions;
     
     /// <inheritdoc />
     public event EventHandler<CloseWindowRequestEventArgs>? CloseWindowRequest;
@@ -59,23 +62,35 @@ public class OwnViewModelBase : ObservableObject, IAttachableViewModel
             new CloseWindowRequestEventArgs(dialogResult));
     }
 
-    protected IDisposable GetScopedUseCase<TUseCase>(out TUseCase useCase) 
+    protected IDisposable GetScopedService<TUseCase>(out TUseCase service) 
         where TUseCase : notnull
     {
-        var srvUseCases = this.GetViewService<IUseCaseViewService>();
-        return srvUseCases.GetScopedUseCase(out useCase);
+        var srvUseCases = this.GetViewService<IServiceProviderViewService>();
+        return srvUseCases.GetScopedUseCase(out service);
     }
     
-    protected IDisposable GetScopedUseCase<TUseCase1, TUseCase2>(out TUseCase1 useCase1, out TUseCase2 useCase2) 
+    protected IDisposable GetScopedService<TUseCase1, TUseCase2>(out TUseCase1 service1, out TUseCase2 service2) 
         where TUseCase1 : notnull
         where TUseCase2 : notnull
     {
-        var srvUseCases = this.GetViewService<IUseCaseViewService>();
-        return srvUseCases.GetScopedUseCase(out useCase1, out useCase2);
+        var srvUseCases = this.GetViewService<IServiceProviderViewService>();
+        return srvUseCases.GetScopedUseCase(out service1, out service2);
     }
     
     protected virtual void OnAssociatedViewChanged(object? associatedView)
     {
-        
+        if (_messageSubscriptions != null)
+        {
+            _messageSubscriptions.UnsubscribeAll();
+            _messageSubscriptions = null;
+        }
+
+        if (associatedView != null)
+        {
+            var srvServiceProvider = GetViewService<IServiceProviderViewService>();
+            srvServiceProvider.GetService(out IInProcessMessageSubscriber srvMessageSubscriber);
+            
+            _messageSubscriptions = srvMessageSubscriber.SubscribeAllWeak(this);
+        }
     }
 }

@@ -45,7 +45,7 @@ public static class ViewController
         if (imageFiles.Length > 0)
         {
             return new ImageCollectionViewModel(
-                Path.GetFileName(directoryPath),
+                directoryPath,
                 imageFiles);
         }
 
