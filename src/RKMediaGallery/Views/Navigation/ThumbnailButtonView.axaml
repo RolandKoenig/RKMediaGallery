@@ -1,0 +1,45 @@
+<ext:MvvmUserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ext="https://github.com/RolandK.AvaloniaExtensions"
+             xmlns:local="clr-namespace:RKMediaGallery.Views.Navigation"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RKMediaGallery.Views.Navigation.ThumbnailButtonView"
+             d:DataContext="{x:Static local:ThumbnailButtonViewModel.EmptyViewModel}"
+             ViewFor="{x:Type local:ThumbnailButtonViewModel}">
+    <Button Background="Transparent"
+            Command="{Binding Path=NavigateToSubdirectoryCommand}">
+        <Panel>
+            <TransitioningContentControl x:Name="CtrlTransition">
+                <TransitioningContentControl.PageTransition>
+                    <CrossFade Duration="0.5" />
+                </TransitioningContentControl.PageTransition>
+            </TransitioningContentControl>
+            
+            <Rectangle VerticalAlignment="Bottom"
+                       Height="45"
+                       Margin="20">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="500,0">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0" Color="#3300CCFF" />
+                            <GradientStop Offset="0.05" Color="#FF00CCFF" />
+                            <GradientStop Offset="0.95" Color="#FF00CCFF" />
+                            <GradientStop Offset="1" Color="#3300CCFF" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            
+            <TextBlock x:Name="CtrlTitleText" 
+                       VerticalAlignment="Bottom" 
+                       HorizontalAlignment="Center"
+                       Height="40"
+                       Margin="20"
+                       FontSize="26" 
+                       Foreground="White"
+                       Text="-" />
+        </Panel>
+    </Button>
+</ext:MvvmUserControl>

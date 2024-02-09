@@ -16,7 +16,7 @@ public class NavigationViewModel : OwnViewModelBase, INavigationTarget
     
     public string Title { get; }
 
-    public ObservableCollection<SubdirectoryInfo> Subdirectories { get; } = new();
+    public ObservableCollection<ThumbnailButtonViewModel> Subdirectories { get; } = new();
     
     public NavigationViewModel(
         string title,
@@ -31,10 +31,9 @@ public class NavigationViewModel : OwnViewModelBase, INavigationTarget
             var thumbnails = Directory.GetFiles(
                 actSubDirectory,
                 MediaGalleryConstants.BROWSING_SEARCH_PATTERN_THUMBNAIL);
-            var subDirectoryTitle = Path.GetFileName(actSubDirectory);
             
-            this.Subdirectories.Add(new SubdirectoryInfo(
-                subDirectoryTitle,
+            this.Subdirectories.Add(new ThumbnailButtonViewModel(
+                actSubDirectory,
                 thumbnails));
         }
     }

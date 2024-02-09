@@ -6,20 +6,21 @@ using Avalonia.Data;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Threading;
+using RolandK.AvaloniaExtensions.Mvvm.Controls;
 
-namespace RKMediaGallery.Controls;
+namespace RKMediaGallery.Views.Navigation;
 
-public partial class ThumbnailViewerControl : UserControl
+public partial class ThumbnailButtonView : MvvmUserControl
 {
-    public static readonly DirectProperty<ThumbnailViewerControl, string[]> ThumbnailsProperty =
-        AvaloniaProperty.RegisterDirect<ThumbnailViewerControl, string[]>(
+    public static readonly DirectProperty<ThumbnailButtonView, string[]> ThumbnailsProperty =
+        AvaloniaProperty.RegisterDirect<ThumbnailButtonView, string[]>(
             nameof(Thumbnails),
             o => o.Thumbnails,
             (o, v) => o.Thumbnails = v,
             defaultBindingMode: BindingMode.OneWay);
 
-    public static readonly DirectProperty<ThumbnailViewerControl, string?> TitleTextProperty =
-        AvaloniaProperty.RegisterDirect<ThumbnailViewerControl, string?>(
+    public static readonly DirectProperty<ThumbnailButtonView, string?> TitleTextProperty =
+        AvaloniaProperty.RegisterDirect<ThumbnailButtonView, string?>(
             nameof(TitleText),
             o => o.TitleText,
             (o, v) => o.TitleText = v,
@@ -48,7 +49,7 @@ public partial class ThumbnailViewerControl : UserControl
         set => this.CtrlTitleText.Text = value;
     }
     
-    public ThumbnailViewerControl()
+    public ThumbnailButtonView()
     {
         InitializeComponent();
     }

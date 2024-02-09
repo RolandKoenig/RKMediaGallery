@@ -15,13 +15,16 @@
         <ItemsControl ItemsSource="{Binding Path=Subdirectories}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Vertical" MaxHeight="800" />
+                    <WrapPanel Orientation="Vertical" MaxHeight="900" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type localUtil:SubdirectoryInfo}">
-                    <controls:ThumbnailViewerControl Thumbnails="{Binding Path=Thumbnails}"
-                                                     TitleText="{Binding Path=Name}" />
+                <DataTemplate DataType="{x:Type localUtil:ThumbnailButtonViewModel}">
+                    <Button Background="Transparent"
+                            Click="OnNavigationButton_Click">
+                        <localUtil:ThumbnailButtonView Thumbnails="{Binding Path=Thumbnails}"
+                                                          TitleText="{Binding Path=Name}"/>
+                    </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
