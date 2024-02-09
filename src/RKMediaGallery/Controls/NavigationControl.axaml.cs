@@ -74,20 +74,15 @@ public partial class NavigationControl : ViewServiceHostUserControl
         if (!this.CanNavigateBack()) { return; }
 
         _historyItems.Pop();
-        if (!_historyItems.TryPop(out var viewModel))
-        {
-            return;
-        }
-
-        if (viewModel is not INavigationTarget viewModelNavTarget)
+        if (!_historyItems.TryPeek(out var historyItem))
         {
             return;
         }
         
         var serviceProvider = this.GetServiceProvider();
         
-        var viewObject = viewModelNavTarget.CreateViewInstance();
-        viewObject.DataContext = viewModel;
+        var viewObject = historyItem.ViewModel.CreateViewInstance();
+        viewObject.DataContext = historyItem.ViewModel;
         
         this.CtrlTransition.Content = viewObject;
     }

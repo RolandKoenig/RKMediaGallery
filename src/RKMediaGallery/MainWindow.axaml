@@ -16,6 +16,12 @@
     <Panel>
         <controls:NavigationControl x:Name="CtrlNavigation" />
         
+        <StackPanel VerticalAlignment="Top"
+                    Orientation="Horizontal">
+            <Button Content="Back"
+                    Command="{Binding Path=NavigateBackCommand}" />
+        </StackPanel>
+        
         <Panel.Background>
            <ImageBrush Source="avares://RKMediaGallery/Assets/Background.png"
                        Stretch="Fill"/> 
