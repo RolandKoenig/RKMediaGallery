@@ -62,19 +62,26 @@ public class OwnViewModelBase : ObservableObject, IAttachableViewModel
             new CloseWindowRequestEventArgs(dialogResult));
     }
 
-    protected IDisposable GetScopedService<TUseCase>(out TUseCase service) 
-        where TUseCase : notnull
+    protected void GetService<TService>(out TService service)
+        where TService : notnull
     {
-        var srvUseCases = this.GetViewService<IServiceProviderViewService>();
-        return srvUseCases.GetScopedUseCase(out service);
+        var srvServiceProvider = this.GetViewService<IServiceProviderViewService>();
+        srvServiceProvider.GetService(out service);
+    }
+
+    protected IDisposable GetScopedService<TService>(out TService service) 
+        where TService : notnull
+    {
+        var srvServiceProvider = this.GetViewService<IServiceProviderViewService>();
+        return srvServiceProvider.GetScopedUseCase(out service);
     }
     
-    protected IDisposable GetScopedService<TUseCase1, TUseCase2>(out TUseCase1 service1, out TUseCase2 service2) 
-        where TUseCase1 : notnull
-        where TUseCase2 : notnull
+    protected IDisposable GetScopedService<TService1, TService2>(out TService1 service1, out TService2 service2) 
+        where TService1 : notnull
+        where TService2 : notnull
     {
-        var srvUseCases = this.GetViewService<IServiceProviderViewService>();
-        return srvUseCases.GetScopedUseCase(out service1, out service2);
+        var srvServiceProvider = this.GetViewService<IServiceProviderViewService>();
+        return srvServiceProvider.GetScopedUseCase(out service1, out service2);
     }
     
     protected virtual void OnAssociatedViewChanged(object? associatedView)

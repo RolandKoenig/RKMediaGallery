@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using RKMediaGallery.Services;
+using RKMediaGallery.Services.RecentlyOpened;
 using RKMediaGallery.Views;
 using RolandK.AvaloniaExtensions.DependencyInjection;
 using RolandK.InProcessMessaging;
@@ -28,6 +30,9 @@ public static class Program
                 var inProcessMessenger = new InProcessMessenger();
                 services.AddSingleton<IInProcessMessageSubscriber>(_ => inProcessMessenger);
                 services.AddSingleton<IInProcessMessagePublisher>(_ => inProcessMessenger);
+                
+                services.AddSingleton<IRecentlyOpenedFilesService>(
+                    _ => new RecentlyOpenedFilesService(".RKMediaGallery", 5));
                 
                 services.AddViewModels();
                 services.AddTransient<MainWindowViewModel>();

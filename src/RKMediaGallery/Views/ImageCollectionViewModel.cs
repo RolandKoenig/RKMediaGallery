@@ -15,7 +15,7 @@ namespace RKMediaGallery.Views;
 
 public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTarget
 {
-    private const double HEIGHT_MARGIN = 180;
+    private const double HEIGHT_MARGIN = 240;
     
     public static readonly ImageCollectionViewModel EmptyViewModel = new("", Array.Empty<string>());
 

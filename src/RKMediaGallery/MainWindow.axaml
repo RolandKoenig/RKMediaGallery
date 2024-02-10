@@ -17,8 +17,9 @@
         <controls:NavigationControl x:Name="CtrlNavigation" />
         
         <StackPanel VerticalAlignment="Top"
-                    HorizontalAlignment="Right"
+                    HorizontalAlignment="Left"
                     Orientation="Horizontal">
+            
             <Button Command="{Binding Path=NavigateBackCommand}"
                     Background="Transparent"
                     IsVisible="{Binding Path=CanNavigateBack}">
@@ -28,6 +29,7 @@
                     </Image.Source>
                 </Image>
             </Button>
+            
             <Button Background="Transparent"
                     Command="{Binding Path=ExitCommand}" 
                     IsVisible="{Binding Path=CanExit}">
@@ -37,6 +39,12 @@
                     </Image.Source>
                 </Image>
             </Button>
+            
+            <TextBlock VerticalAlignment="Center" 
+                       Margin="40"
+                       FontSize="36" 
+                       Foreground="White"
+                       Text="{Binding Path=CurrentViewTitle}" />
         </StackPanel>
         
         <Panel.Background>

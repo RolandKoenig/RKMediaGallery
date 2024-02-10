@@ -16,6 +16,9 @@ public partial class MainWindowViewModel : OwnViewModelBase
     [ObservableProperty]
     private bool _canExit = true;
 
+    [ObservableProperty]
+    private string _currentViewTitle = string.Empty;
+
     [RelayCommand]
     private void NavigateBack()
     {
@@ -35,5 +38,7 @@ public partial class MainWindowViewModel : OwnViewModelBase
         var navStackSize = srvNavigation.NavigationStackSize;
         this.CanNavigateBack = navStackSize > 1;
         this.CanExit = navStackSize <= 1;
+
+        this.CurrentViewTitle = srvNavigation.CurrentViewTitle;
     }
 }
