@@ -3,6 +3,8 @@
 public interface INavigationViewService
 {
     string CurrentViewTitle { get; }
+    
+    int NavigationStackSize { get; }
 
     /// <summary>
     /// Navigates to the given ViewModel.

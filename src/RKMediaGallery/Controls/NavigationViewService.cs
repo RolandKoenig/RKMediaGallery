@@ -5,7 +5,9 @@ namespace RKMediaGallery.Controls;
 internal class NavigationViewService(NavigationControl navigationControl) : ViewServiceBase, INavigationViewService
 {
     public string CurrentViewTitle => navigationControl.CurrentViewTitle;
-    
+
+    public int NavigationStackSize => navigationControl.NavigationStackSize;
+
     /// <inheritdoc />
     public void NavigateTo<TViewModel, TNavigationArgument>(TNavigationArgument argument) 
         where TViewModel : INavigationTarget, INavigationDataReceiver<TNavigationArgument>

@@ -20,11 +20,8 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type localUtil:ThumbnailButtonViewModel}">
-                    <Button Background="Transparent"
-                            Click="OnNavigationButton_Click">
-                        <localUtil:ThumbnailButtonView Thumbnails="{Binding Path=Thumbnails}"
-                                                          TitleText="{Binding Path=Name}"/>
-                    </Button>
+                    <localUtil:ThumbnailButtonView Thumbnails="{Binding Path=Thumbnails}"
+                                                   TitleText="{Binding Path=Name}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

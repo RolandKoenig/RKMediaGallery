@@ -11,6 +11,7 @@
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.7"/>
         <PackageReference Include="Avalonia.Desktop" Version="11.0.7"/>
+        <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0.13" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.7"/>
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.7"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
@@ -24,6 +25,10 @@
     <ItemGroup>
       <None Remove="Assets\Background.png" />
       <AvaloniaResource Include="Assets\Background.png" />
+      <None Remove="Assets\IconBack.svg" />
+      <AvaloniaResource Include="Assets\IconBack.svg" />
+      <None Remove="Assets\IconExit.svg" />
+      <AvaloniaResource Include="Assets\IconExit.svg" />
     </ItemGroup>
     
     <ItemGroup>

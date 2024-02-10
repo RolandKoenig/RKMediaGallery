@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using Avalonia;
 using Microsoft.Extensions.DependencyInjection;
+using RKMediaGallery.Messages;
 using RolandK.AvaloniaExtensions.DependencyInjection;
 using RolandK.AvaloniaExtensions.Mvvm.Controls;
+using RolandK.InProcessMessaging;
 
 namespace RKMediaGallery.Controls;
 
@@ -19,6 +22,8 @@ public partial class NavigationControl : ViewServiceHostUserControl
             return navTarget.Title;
         }
     }
+
+    public int NavigationStackSize => _historyItems.Count;
     
     public NavigationControl()
     {
@@ -32,6 +37,16 @@ public partial class NavigationControl : ViewServiceHostUserControl
         
         this.CtrlTransition.Content = viewObject;
         _historyItems.Push(new NavigationHistoryItem(viewModel));
+        
+        this.PublishNavigatedEvent();
+    }
+
+    private void PublishNavigatedEvent()
+    {
+        var serviceProvider = this.GetServiceProvider();
+        var messagePublisher = serviceProvider.GetRequiredService<IInProcessMessagePublisher>();
+        
+        messagePublisher.Publish<NavigationControlNavigatedMessage>();
     }
 
     public void NavigateTo<TViewModel, TNavigationArgument>(TNavigationArgument argument)
@@ -41,7 +56,7 @@ public partial class NavigationControl : ViewServiceHostUserControl
         
         var viewModel = serviceProvider.GetRequiredService<TViewModel>();
         viewModel.OnReceiveParameterFromNavigation(argument);
-
+        
         this.NavigateTo(viewModel);
     }
     
@@ -85,6 +100,8 @@ public partial class NavigationControl : ViewServiceHostUserControl
         viewObject.DataContext = historyItem.ViewModel;
         
         this.CtrlTransition.Content = viewObject;
+        
+        this.PublishNavigatedEvent();
     }
 
     public bool CanNavigateBack()

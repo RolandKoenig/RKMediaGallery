@@ -26,7 +26,7 @@ public partial class ThumbnailButtonView : MvvmUserControl
             (o, v) => o.TitleText = v,
             defaultBindingMode: BindingMode.OneTime);
 
-    private readonly Random _random = new Random(Environment.TickCount);
+    private Random? _random;
     private string[] _thumbnails = Array.Empty<string>();
     private DispatcherTimer? _refreshTimer;
     private string? _currentThumbnail;
@@ -54,11 +54,26 @@ public partial class ThumbnailButtonView : MvvmUserControl
         InitializeComponent();
     }
 
+    private int GetNextRandomInt(int min, int max)
+    {
+        if (_random == null)
+        {
+            var seed = Environment.TickCount;
+            if (_thumbnails.Length > 0)
+            {
+                seed = _thumbnails[0].GetHashCode();
+            }
+            _random = new Random(seed);
+        }
+
+        return _random.Next(min, max);
+    }
+
     private async void UpdateCurrentImage()
     {
         if (_thumbnails.Length <= 0) { return; }
 
-        var nextThumbnail = _thumbnails[_random.Next(0, _thumbnails.Length)];
+        var nextThumbnail = _thumbnails[GetNextRandomInt(0, _thumbnails.Length)];
         if (_currentThumbnail == nextThumbnail)
         {
             return;
@@ -89,11 +104,12 @@ public partial class ThumbnailButtonView : MvvmUserControl
 
         DispatcherTimer refreshTimer = null;
         refreshTimer = new DispatcherTimer(
-            TimeSpan.FromSeconds(_random.Next(3, 6)),
+            TimeSpan.FromSeconds(GetNextRandomInt(3, 6)),
             DispatcherPriority.Default,
             (_, _) =>
             {
-                refreshTimer!.Interval = TimeSpan.FromSeconds(_random.Next(3, 6));
+                refreshTimer!.Interval = TimeSpan.FromSeconds(GetNextRandomInt(3, 6));
+                refreshTimer!.Interval = TimeSpan.FromSeconds(GetNextRandomInt(3, 6));
                 UpdateCurrentImage();
             });
         _refreshTimer = refreshTimer;

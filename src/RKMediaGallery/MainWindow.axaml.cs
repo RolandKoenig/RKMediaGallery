@@ -30,7 +30,7 @@ public partial class MainWindow : MvvmWindow
         var serviceProvider = this.GetServiceProvider();
         var srvMessagePublisher = serviceProvider.GetRequiredService<IInProcessMessagePublisher>();
         
-        srvMessagePublisher.Publish(new MainWindowSizeChanged(
+        srvMessagePublisher.Publish(new MainWindowSizeChangedMessage(
             e.NewSize.Width, e.NewSize.Height));
     }
 }

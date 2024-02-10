@@ -78,7 +78,7 @@ public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTar
         }
     }
 
-    private void OnMessageReceived(MainWindowSizeChanged message)
+    private void OnMessageReceived(MainWindowSizeChangedMessage message)
     {
         this.UpdateViewMaxHeight(message.Height);
     }
