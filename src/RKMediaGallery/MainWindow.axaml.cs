@@ -21,6 +21,8 @@ public partial class MainWindow : MvvmWindow
         this.ViewServices.Add(new ServiceProviderViewService(this));
         
         this.CtrlNavigation.NavigateTo<HomeViewModel>();
+
+        this.WindowState = WindowState.FullScreen;
     }
 
     protected override void OnSizeChanged(SizeChangedEventArgs e)
