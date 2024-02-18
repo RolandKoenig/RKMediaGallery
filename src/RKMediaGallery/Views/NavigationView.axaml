@@ -15,7 +15,9 @@
         <ItemsControl ItemsSource="{Binding Path=Subdirectories}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Vertical" MaxHeight="900" />
+                    <WrapPanel Orientation="Vertical" 
+                               MaxHeight="900"
+                               VerticalAlignment="Center" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>

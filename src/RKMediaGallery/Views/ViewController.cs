@@ -41,6 +41,7 @@ public static class ViewController
                 return MediaGalleryConstants.SUPPORTED_IMAGE_FORMATS.Contains(actFileExtension,
                     StringComparer.OrdinalIgnoreCase);
             })
+            .Order()
             .ToArray();
         if (imageFiles.Length > 0)
         {
