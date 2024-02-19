@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
+using RKMediaGallery.Messages;
 using RKMediaGallery.ViewServices;
 using RolandK.AvaloniaExtensions.Mvvm;
 using RolandK.AvaloniaExtensions.ViewServices.Base;
@@ -83,7 +85,23 @@ public class OwnViewModelBase : ObservableObject, IAttachableViewModel
         var srvServiceProvider = this.GetViewService<IServiceProviderViewService>();
         return srvServiceProvider.GetScopedUseCase(out service1, out service2);
     }
-    
+
+    private void UpdateViewHeightInternal(double hostHeight)
+    {
+        if (double.IsNaN(hostHeight))
+        {
+            hostHeight = MediaGalleryConstants.SCREEN_REFERENCE_HEIGHT;
+        }
+        
+        var heightFactor = hostHeight / MediaGalleryConstants.SCREEN_REFERENCE_HEIGHT;
+        this.UpdateViewHeight(heightFactor);
+    }
+
+    protected virtual void UpdateViewHeight(double heightFactor)
+    {
+
+    }
+
     protected virtual void OnAssociatedViewChanged(object? associatedView)
     {
         if (_messageSubscriptions != null)
@@ -98,6 +116,16 @@ public class OwnViewModelBase : ObservableObject, IAttachableViewModel
             srvServiceProvider.GetService(out IInProcessMessageSubscriber srvMessageSubscriber);
             
             _messageSubscriptions = srvMessageSubscriber.SubscribeAllWeak(this);
+            _messageSubscriptions = _messageSubscriptions.Concat(
+                [srvMessageSubscriber.Subscribe<MainWindowSizeChangedMessage>(this.OnMessageReceived)]);
+            
+            var srvMainWindowHeightProvider = this.GetViewService<IMainWindowHeightProviderViewService>();
+            this.UpdateViewHeightInternal(srvMainWindowHeightProvider.Height);
         }
+    }
+    
+    private void OnMessageReceived(MainWindowSizeChangedMessage message)
+    {
+        this.UpdateViewHeightInternal(message.Height);
     }
 }

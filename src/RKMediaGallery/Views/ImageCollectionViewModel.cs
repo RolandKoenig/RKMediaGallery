@@ -7,9 +7,7 @@ using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using RKMediaGallery.Controls;
-using RKMediaGallery.Messages;
 using RKMediaGallery.Util;
-using RKMediaGallery.ViewServices;
 
 namespace RKMediaGallery.Views;
 
@@ -49,37 +47,10 @@ public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTar
         }
     }
 
-    private void UpdateViewMaxHeight(double mainWindowHeight)
+    protected override void UpdateViewHeight(double heightFactor)
     {
-        if (double.IsNaN(mainWindowHeight))
-        {
-            mainWindowHeight = 800.0;
-        }
+        base.UpdateViewHeight(heightFactor);
         
-        var heightFactor = mainWindowHeight / MediaGalleryConstants.SCREEN_REFERENCE_HEIGHT;
-
-        var newMaxHeight = mainWindowHeight - MediaGalleryConstants.HEIGHT_MARGIN * heightFactor;
-        if (newMaxHeight < 0)
-        {
-            return;
-        }
-
-        this.ViewMaxHeight = newMaxHeight;
-    }
-
-    protected override void OnAssociatedViewChanged(object? associatedView)
-    {
-        base.OnAssociatedViewChanged(associatedView);
-
-        if (associatedView != null)
-        {
-            var srvMainWindowHeightProvider = this.GetViewService<IMainWindowHeightProviderViewService>();
-            this.UpdateViewMaxHeight(srvMainWindowHeightProvider.Height);
-        }
-    }
-
-    private void OnMessageReceived(MainWindowSizeChangedMessage message)
-    {
-        this.UpdateViewMaxHeight(message.Height);
+        this.ViewMaxHeight = MediaGalleryConstants.SCREEN_CONTENT_MAX_HEIGHT * heightFactor;
     }
 }
