@@ -11,7 +11,7 @@ public static class MediaGalleryConstants
 
     public const int SCREEN_REFERENCE_HEIGHT = 1500;
     
-    public const double HEIGHT_MARGIN = 200;
+    public const double HEIGHT_MARGIN = 400;
 
     public static readonly string[] SUPPORTED_IMAGE_FORMATS = new string[] { ".jpg", ".jpeg", ".png", ".bmp", ".dat", ".JPG", ".JPEG", ".PNG", ".BMP" };
     // public static readonly string[] SUPPORTED_VIDEO_FORMATS = new string[] { ".mpg", ".mpeg", ".avi", ".wmv", ".mp4" };

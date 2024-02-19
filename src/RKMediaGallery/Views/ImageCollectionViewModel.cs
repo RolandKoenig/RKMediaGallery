@@ -56,7 +56,9 @@ public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTar
             mainWindowHeight = 800.0;
         }
         
-        var newMaxHeight = mainWindowHeight - MediaGalleryConstants.HEIGHT_MARGIN;
+        var heightFactor = mainWindowHeight / MediaGalleryConstants.SCREEN_REFERENCE_HEIGHT;
+
+        var newMaxHeight = mainWindowHeight - MediaGalleryConstants.HEIGHT_MARGIN * heightFactor;
         if (newMaxHeight < 0)
         {
             return;
