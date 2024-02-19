@@ -19,10 +19,10 @@
             </TransitioningContentControl>
             
             <Rectangle VerticalAlignment="Bottom"
-                       Height="45"
-                       Margin="20">
+                       Height="{Binding Path=TextBoxBackgroundHeight}"
+                       Margin="{Binding Path=ButtonMargin}">
                 <Rectangle.Fill>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="500,0">
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="100%,0%">
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Offset="0" Color="#3300CCFF" />
                             <GradientStop Offset="0.05" Color="#FF00CCFF" />
@@ -36,9 +36,10 @@
             <TextBlock x:Name="CtrlTitleText" 
                        VerticalAlignment="Bottom" 
                        HorizontalAlignment="Center"
-                       Height="40"
-                       Margin="20"
-                       FontSize="26" 
+                       TextAlignment="Center"
+                       Height="{Binding Path=TextBoxHeight}"
+                       Margin="{Binding Path=ButtonMargin}"
+                       FontSize="{Binding Path=FontSize}" 
                        Foreground="White"
                        Text="-" />
         </Panel>

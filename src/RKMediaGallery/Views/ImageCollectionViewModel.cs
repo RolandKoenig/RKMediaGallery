@@ -15,8 +15,6 @@ namespace RKMediaGallery.Views;
 
 public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTarget
 {
-    private const double HEIGHT_MARGIN = 240;
-    
     public static readonly ImageCollectionViewModel EmptyViewModel = new("", Array.Empty<string>());
 
     [ObservableProperty]
@@ -58,7 +56,7 @@ public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTar
             mainWindowHeight = 800.0;
         }
         
-        var newMaxHeight = mainWindowHeight - HEIGHT_MARGIN;
+        var newMaxHeight = mainWindowHeight - MediaGalleryConstants.HEIGHT_MARGIN;
         if (newMaxHeight < 0)
         {
             return;

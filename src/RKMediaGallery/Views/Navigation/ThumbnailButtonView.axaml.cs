@@ -84,10 +84,13 @@ public partial class ThumbnailButtonView : MvvmUserControl
 
         var newImageControl = new Image();
         newImageControl.Source = nextThumbnailBitmap;
-        newImageControl.Width = 504;
-        newImageControl.Height = 360;
-        newImageControl.Margin = new Thickness(20);
         newImageControl.Stretch = Stretch.UniformToFill;
+        newImageControl.Bind(
+            Image.HeightProperty, new Binding(nameof(ThumbnailButtonViewModel.ImageHeight)));
+        newImageControl.Bind(
+            Image.WidthProperty, new Binding(nameof(ThumbnailButtonViewModel.ImageWidth)));
+        newImageControl.Bind(
+            Image.MarginProperty, new Binding(nameof(ThumbnailButtonViewModel.ButtonMargin)));
         this.CtrlTransition.Content = newImageControl;
     }
 
