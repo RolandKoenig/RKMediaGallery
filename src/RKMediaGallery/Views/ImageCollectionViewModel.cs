@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -17,9 +18,14 @@ namespace RKMediaGallery.Views;
 public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTarget
 {
     public static readonly ImageCollectionViewModel EmptyViewModel = new("", Array.Empty<string>());
-
+    
+    private Vector? _scrollOffsetOnLastClose;
+    
     [ObservableProperty]
     private double _viewMaxHeight = 500.0;
+    
+    [ObservableProperty]
+    private Vector _scrollOffset = Vector.Zero;
     
     public string Title { get; }
 
@@ -56,8 +62,6 @@ public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTar
                 var actBitmap = await Task.Run(() => new Bitmap(actImageFilePath));
                 this.LoadedBitmaps.Add(new ImageCollectionItem(
                     actImageFilePath, actBitmap, this.NavigateToImageCommand));
-
-                await Task.Delay(100);
             }
         }
         catch (Exception e)
@@ -72,5 +76,29 @@ public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTar
         base.UpdateViewHeight(heightFactor);
         
         this.ViewMaxHeight = MediaGalleryConstants.SCREEN_CONTENT_MAX_HEIGHT * heightFactor;
+    }
+    
+    protected override void OnAssociatedViewChanged(object? associatedView)
+    {
+        base.OnAssociatedViewChanged(associatedView);
+        
+        if ((associatedView == null) &&
+            (this.ScrollOffset != Vector.Zero))
+        {
+            _scrollOffsetOnLastClose = this.ScrollOffset;
+        }
+
+        if ((associatedView != null) &&
+            (_scrollOffsetOnLastClose.HasValue))
+        {
+            var srvDispatcher = this.GetViewService<IDispatcherViewService>();
+
+            var newScrollOffset = _scrollOffsetOnLastClose.Value;
+            srvDispatcher.DispatchInNewCycle(
+                () => this.ScrollOffset = newScrollOffset,
+                TimeSpan.FromMilliseconds(200));
+            
+            _scrollOffsetOnLastClose = null;
+        }
     }
 }

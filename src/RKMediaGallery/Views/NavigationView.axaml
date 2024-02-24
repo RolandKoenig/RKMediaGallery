@@ -13,6 +13,7 @@
     <ScrollViewer x:Name="CtrlScrollViewer" 
                   HorizontalScrollBarVisibility="Visible"
                   VerticalScrollBarVisibility="Hidden"
+                  Offset="{Binding Path=ScrollOffset, Mode=TwoWay}"
                   localBehaviors:HorizontalScrollByPointerWheelBehavior.IsHorizontalScrollByPointerWheelEnabled="True">
         <ItemsControl ItemsSource="{Binding Path=Subdirectories}">
             <ItemsControl.ItemsPanel>

@@ -12,6 +12,7 @@
              ViewFor="{x:Type local:ImageCollectionViewModel}">
     <ScrollViewer VerticalScrollBarVisibility="Hidden"
                   HorizontalScrollBarVisibility="Visible"
+                  Offset="{Binding Path=ScrollOffset, Mode=TwoWay}"
                   localBehaviors:HorizontalScrollByPointerWheelBehavior.IsHorizontalScrollByPointerWheelEnabled="True">
         <ItemsControl ItemsSource="{Binding Path=LoadedBitmaps}"
                       MaxHeight="{Binding Path=ViewMaxHeight}">
