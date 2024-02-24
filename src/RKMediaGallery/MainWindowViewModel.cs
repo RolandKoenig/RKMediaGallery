@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using RKMediaGallery.Controls;
 using RKMediaGallery.Messages;
@@ -11,6 +12,8 @@ public partial class MainWindowViewModel : OwnViewModelBase
     private const double DEFAULT_BUTTON_IMAGE_WIDTH = 180.0;
     private const double DEFAULT_TITLE_TEXT_MARGIN = 80.0;
     private const double DEFAULT_TITLE_FONT_SIZE = 72.0;
+    private const double DEFAULT_BUTTON_IMAGE_MARGIN = 15.0;
+    private const double DEFAULT_BUTTON_BORDER_THICKNESS = 10.0;
     
     public static readonly MainWindowViewModel EmptyViewModel = new();
 
@@ -24,8 +27,21 @@ public partial class MainWindowViewModel : OwnViewModelBase
     private string _currentViewTitle = string.Empty;
 
     [ObservableProperty]
-    private double _buttonImageWidth = DEFAULT_BUTTON_IMAGE_WIDTH;
+    private double _buttonImageSideWidth = DEFAULT_BUTTON_IMAGE_WIDTH;
 
+    [ObservableProperty] 
+    private CornerRadius _buttonCornerRadius = new(
+        DEFAULT_BUTTON_IMAGE_WIDTH / 2,
+        DEFAULT_BUTTON_IMAGE_WIDTH / 2);
+
+    [ObservableProperty]
+    private Thickness _buttonImageMargin = new Thickness(
+        DEFAULT_TITLE_TEXT_MARGIN);
+
+    [ObservableProperty]
+    private Thickness _buttonBorderThickness = new Thickness(
+        DEFAULT_BUTTON_BORDER_THICKNESS);
+    
     [ObservableProperty]
     private double _titleTextMargin = DEFAULT_TITLE_TEXT_MARGIN;
 
@@ -48,8 +64,15 @@ public partial class MainWindowViewModel : OwnViewModelBase
     protected override void UpdateViewHeight(double heightFactor)
     {
         base.UpdateViewHeight(heightFactor);
-
-        this.ButtonImageWidth = DEFAULT_BUTTON_IMAGE_WIDTH * heightFactor;
+        
+        this.ButtonImageSideWidth = DEFAULT_BUTTON_IMAGE_WIDTH * heightFactor;
+        this.ButtonCornerRadius = new CornerRadius(
+            DEFAULT_BUTTON_IMAGE_WIDTH * heightFactor * 0.5,
+            DEFAULT_BUTTON_IMAGE_WIDTH * heightFactor * 0.5);
+        this.ButtonImageMargin = new Thickness(
+            DEFAULT_BUTTON_IMAGE_MARGIN * heightFactor);
+        this.ButtonBorderThickness = new Thickness(
+            DEFAULT_BUTTON_BORDER_THICKNESS * heightFactor);
         this.TitleTextMargin = DEFAULT_TITLE_TEXT_MARGIN * heightFactor;
         this.TitleFontSize = DEFAULT_TITLE_FONT_SIZE * heightFactor;
     }

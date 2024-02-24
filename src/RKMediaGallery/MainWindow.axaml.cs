@@ -30,7 +30,7 @@ public partial class MainWindow : MvvmWindow
     protected override void OnSizeChanged(SizeChangedEventArgs e)
     {
         base.OnSizeChanged(e);
-
+            
         var serviceProvider = this.GetServiceProvider();
         var srvMessagePublisher = serviceProvider.GetRequiredService<IInProcessMessagePublisher>();
         

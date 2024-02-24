@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="https://github.com/projektanker/icons.avalonia"
         xmlns:ext="https://github.com/RolandK.AvaloniaExtensions"
         xmlns:controls="clr-namespace:RKMediaGallery.Controls"
         xmlns:local="clr-namespace:RKMediaGallery"
@@ -23,21 +24,35 @@
             <Button Background="Transparent"
                     Command="{Binding Path=ExitCommand}" 
                     IsVisible="{Binding Path=CanExit}">
-                <Image Width="{Binding Path=ButtonImageWidth}">
-                    <Image.Source>
-                        <SvgImage Source="avares://RKMediaGallery/Assets/IconExit.svg"/>
-                    </Image.Source>
-                </Image>
+                <Border CornerRadius="{Binding Path=ButtonCornerRadius}"
+                        Width="{Binding Path=ButtonImageSideWidth}"
+                        Height="{Binding Path=ButtonImageSideWidth}"
+                        BorderBrush="White"
+                        BorderThickness="{Binding Path=ButtonBorderThickness}">
+                    <Image Margin="{Binding Path=ButtonImageMargin}">
+                        <Image.Source>
+                            <i:IconImage Value="fa-xmark" 
+                                         Brush="White" />
+                        </Image.Source>
+                    </Image>
+                </Border>
             </Button>
             
             <Button Command="{Binding Path=NavigateBackCommand}"
                     Background="Transparent"
                     IsVisible="{Binding Path=CanNavigateBack}">
-                <Image Width="{Binding Path=ButtonImageWidth}">
-                    <Image.Source>
-                        <SvgImage Source="avares://RKMediaGallery/Assets/IconBack.svg"/>
-                    </Image.Source>
-                </Image>
+                <Border CornerRadius="{Binding Path=ButtonCornerRadius}"
+                        Width="{Binding Path=ButtonImageSideWidth}"
+                        Height="{Binding Path=ButtonImageSideWidth}"
+                        BorderBrush="White"
+                        BorderThickness="{Binding Path=ButtonBorderThickness}">
+                    <Image Margin="{Binding Path=ButtonImageMargin}">
+                        <Image.Source>
+                            <i:IconImage Value="fa-arrow-left" 
+                                         Brush="White" />
+                        </Image.Source>
+                    </Image>
+                </Border>
             </Button>
             
             <TextBlock VerticalAlignment="Center" 

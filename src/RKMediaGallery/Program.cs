@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using Projektanker.Icons.Avalonia;
+using Projektanker.Icons.Avalonia.FontAwesome;
 using RKMediaGallery.ExceptionViewer;
 using RKMediaGallery.Services;
 using RKMediaGallery.Services.RecentlyOpened;
@@ -34,7 +36,11 @@ public static class Program
     // Avalonia configuration, don't remove; also used by visual designer.
     // ReSharper disable once MemberCanBePrivate.Global
     public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
+    {
+        IconProvider.Current
+            .Register<FontAwesomeIconProvider>();
+        
+        return AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace()
@@ -43,11 +49,12 @@ public static class Program
                 var inProcessMessenger = new InProcessMessenger();
                 services.AddSingleton<IInProcessMessageSubscriber>(_ => inProcessMessenger);
                 services.AddSingleton<IInProcessMessagePublisher>(_ => inProcessMessenger);
-                
+
                 services.AddSingleton<IRecentlyOpenedFilesService>(
                     _ => new RecentlyOpenedFilesService(".RKMediaGallery", 5));
-                
+
                 services.AddViewModels();
                 services.AddTransient<MainWindowViewModel>();
             });
+    }
 }
