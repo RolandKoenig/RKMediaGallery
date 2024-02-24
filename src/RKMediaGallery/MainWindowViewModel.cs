@@ -54,12 +54,29 @@ public partial class MainWindowViewModel : OwnViewModelBase
         this.TitleFontSize = DEFAULT_TITLE_FONT_SIZE * heightFactor;
     }
 
-    private void OnMessageReceived(NavigationControlNavigatedMessage message)
+    private void UpdateNavigationProperties()
     {
+        if (this.AssociatedView == null)
+        {
+            return;
+        }
+        
         var srvNavigation = base.GetViewService<INavigationViewService>();
         var navStackSize = srvNavigation.NavigationStackSize;
         this.CanNavigateBack = navStackSize > 1;
         this.CanExit = navStackSize <= 1;
         this.CurrentViewTitle = srvNavigation.CurrentViewTitle;
+    }
+
+    protected override void OnAssociatedViewChanged(object? associatedView)
+    {
+        base.OnAssociatedViewChanged(associatedView);
+        
+        this.UpdateNavigationProperties();
+    }
+
+    private void OnMessageReceived(NavigationControlNavigatedMessage message)
+    {
+        this.UpdateNavigationProperties();
     }
 }

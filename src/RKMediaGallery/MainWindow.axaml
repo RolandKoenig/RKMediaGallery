@@ -20,22 +20,22 @@
                     HorizontalAlignment="Left"
                     Orientation="Horizontal">
             
-            <Button Command="{Binding Path=NavigateBackCommand}"
-                    Background="Transparent"
-                    IsVisible="{Binding Path=CanNavigateBack}">
-                <Image Width="{Binding Path=ButtonImageWidth}">
-                    <Image.Source>
-                        <SvgImage Source="avares://RKMediaGallery/Assets/IconBack.svg"/>
-                    </Image.Source>
-                </Image>
-            </Button>
-            
             <Button Background="Transparent"
                     Command="{Binding Path=ExitCommand}" 
                     IsVisible="{Binding Path=CanExit}">
                 <Image Width="{Binding Path=ButtonImageWidth}">
                     <Image.Source>
                         <SvgImage Source="avares://RKMediaGallery/Assets/IconExit.svg"/>
+                    </Image.Source>
+                </Image>
+            </Button>
+            
+            <Button Command="{Binding Path=NavigateBackCommand}"
+                    Background="Transparent"
+                    IsVisible="{Binding Path=CanNavigateBack}">
+                <Image Width="{Binding Path=ButtonImageWidth}">
+                    <Image.Source>
+                        <SvgImage Source="avares://RKMediaGallery/Assets/IconBack.svg"/>
                     </Image.Source>
                 </Image>
             </Button>
