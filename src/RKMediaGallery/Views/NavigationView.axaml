@@ -24,8 +24,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type localUtil:ThumbnailButtonViewModel}">
-                    <localUtil:ThumbnailButtonView Thumbnails="{Binding Path=Thumbnails}"
-                                                   TitleText="{Binding Path=Name}"/>
+                    <localUtil:ThumbnailButtonView />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

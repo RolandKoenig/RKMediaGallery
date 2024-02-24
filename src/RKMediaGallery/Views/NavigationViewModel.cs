@@ -18,7 +18,7 @@ public partial class NavigationViewModel : OwnViewModelBase, INavigationTarget
     public string Title { get; }
     
     [ObservableProperty]
-    private double _viewMaxHeight = 500.0;
+    private double _viewMaxHeight = MediaGalleryConstants.SCREEN_CONTENT_MAX_HEIGHT;
 
     public ObservableCollection<ThumbnailButtonViewModel> Subdirectories { get; } = new();
     
@@ -28,6 +28,7 @@ public partial class NavigationViewModel : OwnViewModelBase, INavigationTarget
     {
         this.Title = title;
 
+        var totalSubdirectoryCount = subDirectories.Count;
         var orderedSubdirectories = subDirectories
             .OrderBy(Path.GetFileName);
         foreach (var actSubDirectory in orderedSubdirectories)
@@ -38,6 +39,7 @@ public partial class NavigationViewModel : OwnViewModelBase, INavigationTarget
             
             this.Subdirectories.Add(new ThumbnailButtonViewModel(
                 actSubDirectory,
+                totalSubdirectoryCount < 5,
                 thumbnails));
         }
     }

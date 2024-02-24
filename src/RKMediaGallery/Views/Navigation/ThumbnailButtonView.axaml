@@ -7,7 +7,9 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RKMediaGallery.Views.Navigation.ThumbnailButtonView"
              d:DataContext="{x:Static local:ThumbnailButtonViewModel.EmptyViewModel}"
-             ViewFor="{x:Type local:ThumbnailButtonViewModel}">
+             ViewFor="{x:Type local:ThumbnailButtonViewModel}"
+             Thumbnails="{Binding Path=Thumbnails}"
+             TitleText="{Binding Path=Name}">
     <Button Background="Transparent"
             BorderThickness="0"
             Command="{Binding Path=NavigateToSubdirectoryCommand}">

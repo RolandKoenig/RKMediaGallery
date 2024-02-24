@@ -9,10 +9,11 @@ namespace RKMediaGallery.Views.Navigation;
 
 public partial class ThumbnailButtonViewModel(
     string subdirectory,
+    bool isBigSize,
     string[] thumbnails) : OwnViewModelBase
 {
     public static ThumbnailButtonViewModel EmptyViewModel = new ThumbnailButtonViewModel(
-        string.Empty, Array.Empty<string>());
+        string.Empty, false, Array.Empty<string>());
 
     [ObservableProperty]
     private double _imageWidth = MediaGalleryConstants.THUMBNAIL_REFERENCE_WIDTH;
@@ -48,6 +49,11 @@ public partial class ThumbnailButtonViewModel(
     protected override void UpdateViewHeight(double heightFactor)
     {
         base.UpdateViewHeight(heightFactor);
+
+        if (isBigSize)
+        {
+            heightFactor *= 2;
+        }
         
         this.ImageHeight = MediaGalleryConstants.THUMBNAIL_REFERENCE_HEIGHT * heightFactor;
         this.ImageWidth = MediaGalleryConstants.THUMBNAIL_REFERENCE_WIDTH * heightFactor;
