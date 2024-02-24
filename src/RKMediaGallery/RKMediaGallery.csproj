@@ -37,4 +37,8 @@
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\RKMediaGallery.ExceptionViewer\RKMediaGallery.ExceptionViewer.csproj" />
+    </ItemGroup>
 </Project>

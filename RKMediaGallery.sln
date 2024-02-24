@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKMediaGallery", "src\RKMediaGallery\RKMediaGallery.csproj", "{269B9B95-940D-4782-8D9B-3BD08F4679BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKMediaGallery.ExceptionViewer", "src\RKMediaGallery.ExceptionViewer\RKMediaGallery.ExceptionViewer.csproj", "{2F285588-D34F-4447-8D98-DDFA5348E4BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{269B9B95-940D-4782-8D9B-3BD08F4679BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{269B9B95-940D-4782-8D9B-3BD08F4679BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{269B9B95-940D-4782-8D9B-3BD08F4679BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F285588-D34F-4447-8D98-DDFA5348E4BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F285588-D34F-4447-8D98-DDFA5348E4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F285588-D34F-4447-8D98-DDFA5348E4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F285588-D34F-4447-8D98-DDFA5348E4BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
