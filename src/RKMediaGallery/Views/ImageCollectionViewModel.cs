@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using RKMediaGallery.Controls;
 using RKMediaGallery.Util;
+using RKMediaGallery.Views.ImageCollection;
+using RKMediaGallery.ViewServices;
 
 namespace RKMediaGallery.Views;
 
@@ -20,7 +23,7 @@ public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTar
     
     public string Title { get; }
 
-    public ObservableCollection<Bitmap> LoadedBitmaps { get; } = new();
+    public ObservableCollection<ImageCollectionItem> LoadedBitmaps { get; } = new();
     
     public ImageCollectionViewModel(
         string directory,
@@ -36,14 +39,31 @@ public partial class ImageCollectionViewModel : OwnViewModelBase, INavigationTar
         return new ImageCollectionView();
     }
 
+    [RelayCommand]
+    private void NavigateToImage(ImageCollectionItem item)
+    {
+        var srvNavigation = this.GetViewService<INavigationViewService>();
+        var singleImageViewModel = new SingleImageViewModel(item.Bitmap);
+        srvNavigation.NavigateTo(singleImageViewModel);
+    }
+
     private async void LoadBitmaps(IReadOnlyList<string> imageFiles)
     {
-        foreach (var actImage in imageFiles)
+        try
         {
-            var actBitmap = await Task.Run(() => new Bitmap(actImage));
-            this.LoadedBitmaps.Add(actBitmap);
+            foreach (var actImageFilePath in imageFiles)
+            {
+                var actBitmap = await Task.Run(() => new Bitmap(actImageFilePath));
+                this.LoadedBitmaps.Add(new ImageCollectionItem(
+                    actImageFilePath, actBitmap, this.NavigateToImageCommand));
 
-            await Task.Delay(100);
+                await Task.Delay(100);
+            }
+        }
+        catch (Exception e)
+        {
+            var srvErrorReporting = this.GetViewService<IErrorReportingViewService>();
+            await srvErrorReporting.ShowErrorDialogAsync(e);
         }
     }
 

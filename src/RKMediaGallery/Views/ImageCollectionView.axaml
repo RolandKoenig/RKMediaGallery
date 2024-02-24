@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ext="https://github.com/RolandK.AvaloniaExtensions"
              xmlns:local="clr-namespace:RKMediaGallery.Views"
+             xmlns:localUtil="clr-namespace:RKMediaGallery.Views.ImageCollection"
              xmlns:localBehaviors="clr-namespace:RKMediaGallery.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RKMediaGallery.Views.ImageCollectionView"
@@ -20,10 +21,15 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.DataTemplates>
-                <DataTemplate DataType="Bitmap">
-                    <Image Source="{Binding}"
-                           Stretch="UniformToFill"
-                           Margin="20,0,20,0" />
+                <DataTemplate DataType="localUtil:ImageCollectionItem">
+                    <Button Margin="20,0,20,0"
+                            BorderBrush="Transparent"
+                            Background="Transparent"
+                            Command="{Binding Path=NavigateToImageCommand}"
+                            CommandParameter="{Binding}">
+                        <Image Source="{Binding Path=Bitmap}"
+                               Stretch="UniformToFill"/>
+                    </Button>
                 </DataTemplate>
             </ItemsControl.DataTemplates>
         </ItemsControl>

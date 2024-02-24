@@ -19,6 +19,7 @@ public partial class MainWindow : MvvmWindow
         this.ViewServices.Add(new NavigationViewService(this.CtrlNavigation));
         this.ViewServices.Add(new MainWindowHeightProviderViewService(this));
         this.ViewServices.Add(new ServiceProviderViewService(this));
+        this.ViewServices.Add(new ErrorReportingViewService(this));
         
         this.CtrlNavigation.NavigateTo<HomeViewModel>();
 
