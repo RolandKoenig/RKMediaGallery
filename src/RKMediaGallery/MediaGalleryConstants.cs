@@ -10,6 +10,7 @@ public static class MediaGalleryConstants
     public const int THUMBNAIL_BUTTON_FONT_SIZE = 26;
 
     public const int SCREEN_REFERENCE_HEIGHT = 1500;
+    public const double SCREEN_REFERENCE_WIDTH = (SCREEN_REFERENCE_HEIGHT / 9.0) * 16.0;
     public const int SCREEN_CONTENT_MAX_HEIGHT = SCREEN_REFERENCE_HEIGHT - HEIGHT_MARGIN;
     
     public const int HEIGHT_MARGIN = 400;
