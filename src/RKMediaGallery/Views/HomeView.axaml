@@ -8,13 +8,26 @@
              x:Class="RKMediaGallery.Views.HomeView"
              ViewFor="{x:Type local:HomeViewModel}">
     <Panel>
-        <Button Command="{Binding Path=SelectMediaDirectoryAndStartCommand}"
-                Content="Start with directory" 
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-            <Button.RenderTransform>
-                <ScaleTransform ScaleX="3" ScaleY="3" />
-            </Button.RenderTransform> 
-        </Button>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Button Command="{Binding Path=NavigateToRecentlyOpenedDirectoryCommand}"
+                    Content="Go to recently opened" 
+                    Margin="50"
+                    Width="200">
+                <Button.RenderTransform>
+                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                </Button.RenderTransform> 
+            </Button>
+            
+            <Button Command="{Binding Path=SelectMediaDirectoryAndStartCommand}"
+                    Content="Start with directory"
+                    Margin="50"
+                    Width="200">
+                <Button.RenderTransform>
+                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                </Button.RenderTransform> 
+            </Button>
+        </StackPanel>
     </Panel>
 </ext:MvvmUserControl>

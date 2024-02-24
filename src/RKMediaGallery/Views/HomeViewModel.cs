@@ -16,6 +16,9 @@ public partial class HomeViewModel : OwnViewModelBase, INavigationTarget
     [ObservableProperty]
     private string _mediaDirectory;
 
+    [ObservableProperty]
+    private bool _hasRecentlyOpened;
+
     private bool _isFirstNavigation = true;
     
     public string Title { get; } = "Home";
@@ -60,13 +63,26 @@ public partial class HomeViewModel : OwnViewModelBase, INavigationTarget
             (_isFirstNavigation == true))
         {
             _isFirstNavigation = false;
-            base.GetService(out IRecentlyOpenedFilesService srvRecentlyOpened);
+            await this.NavigateToRecentlyOpenedDirectory();
+        }
 
-            var recentlyOpenedFiles = await srvRecentlyOpened.GetAllRecentlyOpenedFilesAsync();
-            if (recentlyOpenedFiles.Count > 0)
-            {
-                await NavigateToDirectoryAsync(recentlyOpenedFiles[0]);
-            }
+        if (associatedView != null)
+        {
+            base.GetService(out IRecentlyOpenedFilesService srvRecentlyOpened);
+            this.HasRecentlyOpened = !string.IsNullOrEmpty(
+                await srvRecentlyOpened.TryGetLastOpenedFileAsync());
+        }
+    }
+
+    [RelayCommand(CanExecute = nameof(HasRecentlyOpened))]
+    private async Task NavigateToRecentlyOpenedDirectory()
+    {
+        base.GetService(out IRecentlyOpenedFilesService srvRecentlyOpened);
+
+        var recentlyOpenedFiles = await srvRecentlyOpened.GetAllRecentlyOpenedFilesAsync();
+        if (recentlyOpenedFiles.Count > 0)
+        {
+            await NavigateToDirectoryAsync(recentlyOpenedFiles[0]);
         }
     }
 }
