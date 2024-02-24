@@ -5,12 +5,15 @@
              xmlns:ext="https://github.com/RolandK.AvaloniaExtensions"
              xmlns:local="clr-namespace:RKMediaGallery.Views"
              xmlns:localUtil="clr-namespace:RKMediaGallery.Views.Navigation"
+             xmlns:localBehaviors="clr-namespace:RKMediaGallery.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RKMediaGallery.Views.NavigationView"
              ViewFor="{x:Type local:NavigationViewModel}"
              d:DataContext="{x:Static local:NavigationViewModel.EmptyViewModel}">
-    <ScrollViewer HorizontalScrollBarVisibility="Visible"
-                  VerticalScrollBarVisibility="Hidden">
+    <ScrollViewer x:Name="CtrlScrollViewer" 
+                  HorizontalScrollBarVisibility="Visible"
+                  VerticalScrollBarVisibility="Hidden"
+                  localBehaviors:HorizontalScrollByPointerWheelBehavior.IsHorizontalScrollByPointerWheelEnabled="True">
         <ItemsControl ItemsSource="{Binding Path=Subdirectories}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
