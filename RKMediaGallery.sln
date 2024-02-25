@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKMediaGallery", "src\RKMed
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKMediaGallery.ExceptionViewer", "src\RKMediaGallery.ExceptionViewer\RKMediaGallery.ExceptionViewer.csproj", "{2F285588-D34F-4447-8D98-DDFA5348E4BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKMediaGallery.Tests", "src\RKMediaGallery.Tests\RKMediaGallery.Tests.csproj", "{3D6B1545-348A-4AB7-B091-218CC9CFF78A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{2F285588-D34F-4447-8D98-DDFA5348E4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F285588-D34F-4447-8D98-DDFA5348E4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F285588-D34F-4447-8D98-DDFA5348E4BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D6B1545-348A-4AB7-B091-218CC9CFF78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D6B1545-348A-4AB7-B091-218CC9CFF78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D6B1545-348A-4AB7-B091-218CC9CFF78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D6B1545-348A-4AB7-B091-218CC9CFF78A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

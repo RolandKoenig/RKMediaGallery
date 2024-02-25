@@ -12,14 +12,14 @@
              UseLayoutRounding="True">
     <ScrollViewer VerticalScrollBarVisibility="Auto"
                   HorizontalScrollBarVisibility="Auto">
-        <paz:ZoomBorder Name="ZoomBorder"
-                        Stretch="None" 
+        <paz:ZoomBorder Stretch="None" 
                         ZoomSpeed="1.2"
                         Background="Transparent" 
                         ClipToBounds="True" 
                         Focusable="True"
                         EnableZoom="True"
                         EnablePan="True"
+                        PanButton="Left"
                         EnableGestureTranslation="True"
                         EnableGestureZoom="True"
                         EnableConstrains="False"
@@ -28,10 +28,10 @@
             <Canvas Background="Transparent" 
                     Width="{Binding Path=ScreenWidth}" 
                     Height="{Binding Path=ScreenHeight}">
-                <Image Source="{Binding Path=Bitmap}"
-                       Stretch="Uniform" 
-                       Canvas.Left="0"
+                <Image Canvas.Left="0"
                        Canvas.Top="0"
+                       Source="{Binding Path=Bitmap}"
+                       Stretch="Uniform" 
                        Width="{Binding Path=ScreenWidth}" 
                        Height="{Binding Path=ScreenHeight}"/>
             </Canvas>
