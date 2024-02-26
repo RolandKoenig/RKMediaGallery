@@ -6,6 +6,8 @@ internal class NavigationViewService(NavigationControl navigationControl) : View
 {
     public string CurrentViewTitle => navigationControl.CurrentViewTitle;
 
+    public string CurrentHistoryDisplayText => navigationControl.CurrentHistoryDisplayText;
+
     public int NavigationStackSize => navigationControl.NavigationStackSize;
 
     /// <inheritdoc />

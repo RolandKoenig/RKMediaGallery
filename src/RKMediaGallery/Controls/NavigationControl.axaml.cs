@@ -1,5 +1,6 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Avalonia;
 using Microsoft.Extensions.DependencyInjection;
 using RKMediaGallery.Messages;
@@ -20,6 +21,30 @@ public partial class NavigationControl : ViewServiceHostUserControl
             if (this.CtrlTransition.Content is not StyledElement control) { return string.Empty; }
             if (control.DataContext is not INavigationTarget navTarget) { return string.Empty; }
             return navTarget.Title;
+        }
+    }
+
+    public string CurrentHistoryDisplayText
+    {
+        get
+        {
+            var historyItemCount = _historyItems.Count;
+            if (historyItemCount <= 1)
+            {
+                return string.Empty;
+            }
+            
+            var strBuilder = new StringBuilder(256);
+            foreach (var actHistoryItem in _historyItems.Reverse().Take(historyItemCount - 1))
+            {
+                if (strBuilder.Length > 0)
+                {
+                    strBuilder.Append(" / ");
+                }
+                strBuilder.Append(actHistoryItem.ViewModel.Title);
+            }
+            
+            return strBuilder.ToString();
         }
     }
 

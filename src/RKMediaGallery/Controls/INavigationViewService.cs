@@ -4,6 +4,8 @@ public interface INavigationViewService
 {
     string CurrentViewTitle { get; }
     
+    string CurrentHistoryDisplayText { get; }
+    
     int NavigationStackSize { get; }
 
     /// <summary>

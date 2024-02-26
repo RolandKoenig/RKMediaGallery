@@ -55,11 +55,19 @@
                 </Border>
             </Button>
             
-            <TextBlock VerticalAlignment="Center" 
-                       Margin="{Binding Path=TitleTextMargin}"
-                       FontSize="{Binding Path=TitleFontSize}" 
-                       Foreground="White"
-                       Text="{Binding Path=CurrentViewTitle}" />
+            <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Center" >
+                <TextBlock IsVisible="{Binding Path=IsCurrentHistoryVisible}" 
+                           Margin="{Binding Path=TitleTextMargin}"
+                           FontSize="{Binding Path=SubtitleFontSize}" 
+                           Foreground="WhiteSmoke"
+                           Text="{Binding Path=CurrentHistoryDisplayText}" />
+                <TextBlock Margin="{Binding Path=TitleTextMargin}"
+                           FontSize="{Binding Path=TitleFontSize}" 
+                           Foreground="White"
+                           Text="{Binding Path=CurrentViewTitle}" />
+            </StackPanel>
+
         </StackPanel>
         
         <Panel.Background>

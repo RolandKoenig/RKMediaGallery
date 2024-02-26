@@ -12,6 +12,7 @@ public partial class MainWindowViewModel : OwnViewModelBase
     private const double DEFAULT_BUTTON_IMAGE_WIDTH = 180.0;
     private const double DEFAULT_TITLE_TEXT_MARGIN = 80.0;
     private const double DEFAULT_TITLE_FONT_SIZE = 72.0;
+    private const double DEFAULT_SUBTITLE_FONT_SIZE = 32.0;
     private const double DEFAULT_BUTTON_IMAGE_MARGIN = 15.0;
     private const double DEFAULT_BUTTON_BORDER_THICKNESS = 10.0;
     
@@ -26,6 +27,12 @@ public partial class MainWindowViewModel : OwnViewModelBase
     [ObservableProperty]
     private string _currentViewTitle = string.Empty;
 
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(this.IsCurrentHistoryVisible))]
+    private string _currentHistoryDisplayText = string.Empty;
+
+    public bool IsCurrentHistoryVisible => !string.IsNullOrEmpty(this.CurrentHistoryDisplayText);
+    
     [ObservableProperty]
     private double _buttonImageSideWidth = DEFAULT_BUTTON_IMAGE_WIDTH;
 
@@ -47,6 +54,9 @@ public partial class MainWindowViewModel : OwnViewModelBase
 
     [ObservableProperty]
     private double _titleFontSize = DEFAULT_TITLE_FONT_SIZE;
+
+    [ObservableProperty]
+    private double _subtitleFontSize = DEFAULT_SUBTITLE_FONT_SIZE;
     
     [RelayCommand]
     private void NavigateBack()
@@ -75,6 +85,7 @@ public partial class MainWindowViewModel : OwnViewModelBase
             DEFAULT_BUTTON_BORDER_THICKNESS * heightFactor);
         this.TitleTextMargin = DEFAULT_TITLE_TEXT_MARGIN * heightFactor;
         this.TitleFontSize = DEFAULT_TITLE_FONT_SIZE * heightFactor;
+        this.SubtitleFontSize = DEFAULT_SUBTITLE_FONT_SIZE * heightFactor;
     }
 
     private void UpdateNavigationProperties()
@@ -89,6 +100,9 @@ public partial class MainWindowViewModel : OwnViewModelBase
         this.CanNavigateBack = navStackSize > 1;
         this.CanExit = navStackSize <= 1;
         this.CurrentViewTitle = srvNavigation.CurrentViewTitle;
+        this.CurrentHistoryDisplayText = !string.IsNullOrEmpty(this.CurrentViewTitle) 
+            ? srvNavigation.CurrentHistoryDisplayText
+            : string.Empty;
     }
 
     protected override void OnAssociatedViewChanged(object? associatedView)
