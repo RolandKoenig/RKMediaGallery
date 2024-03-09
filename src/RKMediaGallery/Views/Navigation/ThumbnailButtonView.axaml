@@ -16,7 +16,8 @@
         <Panel>
             <TransitioningContentControl x:Name="CtrlTransition">
                 <TransitioningContentControl.PageTransition>
-                    <CrossFade Duration="0.5" />
+                    <local:ThumbnailSwitchTransition Duration="0.5" 
+                                                     TransitionDistance="50"/>
                 </TransitioningContentControl.PageTransition>
             </TransitioningContentControl>
             
