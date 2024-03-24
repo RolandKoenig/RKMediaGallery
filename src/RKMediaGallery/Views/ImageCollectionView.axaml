@@ -28,8 +28,14 @@
                             Background="Transparent"
                             Command="{Binding Path=NavigateToImageCommand}"
                             CommandParameter="{Binding}">
-                        <Image Source="{Binding Path=Bitmap}"
-                               Stretch="UniformToFill"/>
+                        <Panel>
+                            <Panel.Effect>
+                                <DropShadowEffect Color="#AA000000" />
+                            </Panel.Effect>
+                            
+                            <Image Source="{Binding Path=Bitmap}"
+                                   Stretch="UniformToFill"/>
+                        </Panel>
                     </Button>
                 </DataTemplate>
             </ItemsControl.DataTemplates>

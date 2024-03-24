@@ -21,6 +21,10 @@
                 </TransitioningContentControl.PageTransition>
             </TransitioningContentControl>
             
+            <Panel.Effect>
+                <DropShadowEffect Color="#AA000000" />
+            </Panel.Effect>
+            
             <Rectangle VerticalAlignment="Bottom"
                        Height="{Binding Path=TextBoxBackgroundHeight}"
                        Margin="{Binding Path=ButtonMargin}">
