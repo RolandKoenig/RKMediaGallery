@@ -9,20 +9,20 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.7"/>
-        <PackageReference Include="Avalonia.Controls.PanAndZoom" Version="11.0.0.2" />
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.7"/>
-        <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0.13" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.7"/>
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.7"/>
+        <PackageReference Include="Avalonia" Version="11.0.10" />
+        <PackageReference Include="Avalonia.Controls.PanAndZoom" Version="11.0.0.3" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.10" />
+        <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0.16" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.7"/>
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-        <PackageReference Include="RolandK.AvaloniaExtensions" Version="2.0.4" />
-        <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="2.0.4" />
+        <PackageReference Include="RolandK.AvaloniaExtensions" Version="2.1.0" />
+        <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="2.1.0" />
         <PackageReference Include="RolandK.InProcessMessaging" Version="1.0.3" />
-        <PackageReference Include="Projektanker.Icons.Avalonia" Version="9.0.1" />
-        <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="9.0.1" />
+        <PackageReference Include="Projektanker.Icons.Avalonia" Version="9.1.2" />
+        <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="9.1.2" />
     </ItemGroup>
     
     <ItemGroup>

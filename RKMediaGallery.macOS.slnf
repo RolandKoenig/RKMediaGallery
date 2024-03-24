@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "RKMediaGallery.sln",
+    "projects": [
+      "src\\RKMediaGallery.ExceptionViewer\\RKMediaGallery.ExceptionViewer.csproj",
+      "src\\RKMediaGallery.Tests\\RKMediaGallery.Tests.csproj",
+      "src\\RKMediaGallery\\RKMediaGallery.csproj"
+    ]
+  }
+}
