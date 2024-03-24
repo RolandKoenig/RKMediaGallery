@@ -3,11 +3,11 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using Projektanker.Icons.Avalonia;
 using Projektanker.Icons.Avalonia.FontAwesome;
-using RKMediaGallery.ExceptionViewer;
 using RKMediaGallery.Services;
 using RKMediaGallery.Services.RecentlyOpened;
 using RKMediaGallery.Views;
 using RolandK.AvaloniaExtensions.DependencyInjection;
+using RolandK.AvaloniaExtensions.ExceptionHandling;
 using RolandK.InProcessMessaging;
 
 namespace RKMediaGallery;
@@ -28,8 +28,11 @@ public static class Program
         }
         catch (Exception ex)
         {
-            GlobalErrorReporting.TryShowGlobalExceptionDialogInAnotherProcess(ex, "RKMediaGallery");
-            return -1;
+            GlobalErrorReporting.TryShowBlockingGlobalExceptionDialogInAnotherProcess(
+                ex, 
+                ".RKMediaGallery",
+                "RKMediaGallery.ExceptionViewer");
+            throw;
         }
     }
 
