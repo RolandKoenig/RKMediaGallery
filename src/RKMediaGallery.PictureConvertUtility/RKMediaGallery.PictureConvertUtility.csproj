@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.0.10"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.10"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10"/>
+        
+        <PackageReference Include="RolandK.AvaloniaExtensions" Version="2.1.0" />
+        <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="2.1.0" />
+        <PackageReference Include="RolandK.AvaloniaExtensions.ExceptionHandling" Version="2.1.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.0.10"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\RKMediaGallery.ExceptionViewer\RKMediaGallery.ExceptionViewer.csproj" />
+    </ItemGroup>
+</Project>
