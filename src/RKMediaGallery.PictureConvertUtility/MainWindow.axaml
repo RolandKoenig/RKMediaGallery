@@ -1,9 +1,48 @@
-<Window xmlns="https://github.com/avaloniaui"
+<ext:MvvmWindow xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ext="https://github.com/RolandK.AvaloniaExtensions"
+        xmlns:local="clr-namespace:RKMediaGallery.PictureConvertUtility"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RKMediaGallery.PictureConvertUtility.MainWindow"
-        Title="RKMediaGallery.PictureConvertUtility">
-    Welcome to Avalonia!
-</Window>
+        Title="RKMediaGallery.PictureConvertUtility"
+        Width="400" Height="400"
+        ViewFor="{x:Type local:MainWindowViewModel}"
+        x:DataType="local:MainWindowViewModel"
+        d:DataContext="{x:Static local:MainWindowViewModel.DesignViewModel}"
+        DataContext="{ext:CreateUsingDependencyInjection {x:Type local:MainWindowViewModel}}">
+    <DockPanel LastChildFill="True">
+        <Button DockPanel.Dock="Bottom"
+                Content="Close"
+                Margin="10"
+                HorizontalAlignment="Right"
+                Command="{Binding Path=CloseCommand}"/>
+        
+        <StackPanel Orientation="Vertical"
+                    Margin="10"
+                    HorizontalAlignment="Stretch">
+        
+            <TextBlock Text="1. Change file names (yyyy-MM-dd #.*)" />
+            <StackPanel Orientation="Vertical"
+                        Margin="25,10,10,25">
+                <Button Content="Update File Names"
+                        Command="{Binding Path=UpdateFileNamesCommand}"/>
+            </StackPanel>
+        
+            <TextBlock Text="2. Convert files to jpeg" />
+            
+            <TextBlock Text="3. Sort files into directories" />
+        
+            <TextBlock Text="4. Add Thumbnail_#.* files" />
+        
+            <TextBlock Text="5. Update picture dimensions" />
+            <StackPanel Orientation="Vertical"
+                        Margin="25,10,10,25">
+                <Button Content="Update Picture Dimensions (recursive)" />
+            </StackPanel>
+        </StackPanel>
+        
+    </DockPanel>
+
+</ext:MvvmWindow>

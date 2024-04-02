@@ -1,5 +1,7 @@
 ﻿using Avalonia;
 using System;
+using Microsoft.Extensions.DependencyInjection;
+using RolandK.AvaloniaExtensions.DependencyInjection;
 using RolandK.AvaloniaExtensions.ExceptionHandling;
 
 namespace RKMediaGallery.PictureConvertUtility;
@@ -32,5 +34,9 @@ public static class Program
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
-            .LogToTrace();
+            .LogToTrace()
+            .UseDependencyInjection(services =>
+            {
+                services.AddTransient<MainWindowViewModel>();
+            });
 }
