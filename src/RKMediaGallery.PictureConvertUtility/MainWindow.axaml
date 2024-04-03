@@ -19,7 +19,20 @@
                 HorizontalAlignment="Right"
                 Command="{Binding Path=CloseCommand}"/>
         
-        <StackPanel Orientation="Vertical"
+        <StackPanel DockPanel.Dock="Bottom"
+                    Margin="10">
+            <TextBlock x:Name="CtrlProgressText" 
+                       Text=""
+                       IsVisible="False"/>
+            <ProgressBar x:Name="CtrlProgressBar" 
+                         Value="0" 
+                         Minimum="0" 
+                         Maximum="100"
+                         IsVisible="False"/>
+        </StackPanel>
+        
+        <StackPanel x:Name="CtrlMainContent" 
+                    Orientation="Vertical"
                     Margin="10"
                     HorizontalAlignment="Stretch">
         

@@ -26,10 +26,4 @@
     <ItemGroup>
       <ProjectReference Include="..\RKMediaGallery.ExceptionViewer\RKMediaGallery.ExceptionViewer.csproj" />
     </ItemGroup>
-    
-    <ItemGroup>
-      <Compile Include="..\RKMediaGallery\MediaGalleryConstants.cs">
-        <Link>MediaGalleryConstants.cs</Link>
-      </Compile>
-    </ItemGroup>
 </Project>

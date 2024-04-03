@@ -15,12 +15,21 @@ public class OwnViewModelBase : ObservableObject, IAttachableViewModel
     /// <inheritdoc />
     public event EventHandler<ViewServiceRequestEventArgs>? ViewServiceRequest;
 
+    public event EventHandler<EventArgs>? ViewDisconnected;
+
     /// <inheritdoc />
     public object? AssociatedView
     {
         get => _associatedView;
         set
         {
+            if (_associatedView == value) { return; }
+            
+            if (_associatedView != null)
+            {
+                this.ViewDisconnected?.Invoke(this, EventArgs.Empty);
+            }
+            
             _associatedView = value;
             this.OnAssociatedViewChanged(_associatedView);
         }

@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using RKMediaGallery.PictureConvertUtility.UseCases;
 using RKMediaGallery.PictureConvertUtility.Util;
+using RKMediaGallery.PictureConvertUtility.ViewService;
 using RolandK.AvaloniaExtensions.ViewServices;
 
 namespace RKMediaGallery.PictureConvertUtility;
@@ -22,7 +23,9 @@ public partial class MainWindowViewModel : OwnViewModelBase
         var useCase = new UpdateFileNamesUseCase();
         
         await useCase.UpdateFileNamesAsync(
-            this.GetViewService<IOpenDirectoryViewService>());
+            this.GetViewService<IOpenDirectoryViewService>(),
+            this.GetViewService<IProgressViewService>(),
+            CancellationTokenUtil.CancelAfterViewDisconnected(this));
     }
 
     [RelayCommand]
