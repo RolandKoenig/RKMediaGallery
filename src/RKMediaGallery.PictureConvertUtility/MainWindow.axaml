@@ -39,7 +39,8 @@
             <TextBlock Text="5. Update picture dimensions" />
             <StackPanel Orientation="Vertical"
                         Margin="25,10,10,25">
-                <Button Content="Update Picture Dimensions (recursive)" />
+                <Button Content="Update Picture Dimensions (recursive)"
+                        Command="{Binding Path=UpdatePictureDimensionsCommand}"/>
             </StackPanel>
         </StackPanel>
         

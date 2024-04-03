@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
+using ImageMagick;
 using RKMediaGallery.PictureConvertUtility.Util;
 using RolandK.AvaloniaExtensions.ViewServices;
 using Path = System.IO.Path;
@@ -34,7 +36,7 @@ public partial class MainWindowViewModel : OwnViewModelBase
             var actFileCreationTime = File.GetCreationTime(actFile);
             var actFileDate = DateOnly.FromDateTime(actFileCreationTime);
             
-            var actFileStringStr = actFileCreationTime.ToString("yyyy-MM-dd_hh-mm-ss");
+            var actFileStringStr = actFileCreationTime.ToString("yyyy-MM-dd_HH-mm-ss");
             var actExt = Path.GetExtension(actFile);
             
             File.Move(
@@ -42,6 +44,37 @@ public partial class MainWindowViewModel : OwnViewModelBase
                 Path.Combine(
                     actDirectory,
                     $"{actFileStringStr}{actExt}"));
+        }
+    }
+
+    [RelayCommand]
+    private async Task UpdatePictureDimensionsAsync()
+    {
+        var srvDirectoryDialog = this.GetViewService<IOpenDirectoryViewService>();
+        var directory = await srvDirectoryDialog.ShowOpenDirectoryDialogAsync("Select directory");
+        if (string.IsNullOrEmpty(directory)) { return; }
+
+        foreach (var actFilePath in LoopOverFilesRecursively(directory))
+        {
+            var actFileExtension = Path.GetExtension(actFilePath);
+            if (!MediaGalleryConstants.SUPPORTED_IMAGE_FORMATS.Contains(actFileExtension, StringComparer.OrdinalIgnoreCase)){ continue; }
+
+            var desiredLongestDimension = 3427.0;
+            if (Path.GetFileName(actFilePath)
+                .StartsWith(MediaGalleryConstants.THUMBNAIL_PREFIX, StringComparison.OrdinalIgnoreCase))
+            {
+                desiredLongestDimension = 1280.0;
+            }
+            
+            using var image = new MagickImage(actFilePath);
+
+            var longestDimension = image.Width > image.Height ? image.Width : image.Height;
+            var resizePercentage = desiredLongestDimension / longestDimension;
+            image.Resize(
+                (int)(image.Width * resizePercentage),
+                (int)(image.Height * resizePercentage));
+            
+            await image.WriteAsync(actFilePath);
         }
     }
 
