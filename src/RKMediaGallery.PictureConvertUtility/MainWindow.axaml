@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:RKMediaGallery.PictureConvertUtility"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RKMediaGallery.PictureConvertUtility.MainWindow"
-        Title="RKMediaGallery.PictureConvertUtility"
+        Title="RK MediaGallery - PictureConvertUtility"
         Width="400" Height="400"
         ViewFor="{x:Type local:MainWindowViewModel}"
         x:DataType="local:MainWindowViewModel"
         d:DataContext="{x:Static local:MainWindowViewModel.DesignViewModel}"
-        DataContext="{ext:CreateUsingDependencyInjection {x:Type local:MainWindowViewModel}}">
+        DataContext="{ext:CreateUsingDependencyInjection {x:Type local:MainWindowViewModel}}"
+        CanResize="False">
     <DockPanel LastChildFill="True">
         <Button DockPanel.Dock="Bottom"
                 Content="Close"
@@ -35,23 +36,36 @@
                     Orientation="Vertical"
                     Margin="10"
                     HorizontalAlignment="Stretch">
+            <StackPanel.Styles>
+                <Style Selector="TextBlock.ConvertStep">
+                    <Setter Property="Margin" Value="0,10,0,0" />
+                </Style>
+                <Style Selector="StackPanel.ConvertButtonPanel">
+                    <Setter Property="Margin" Value="25,5,10,25" />
+                </Style>
+            </StackPanel.Styles>    
         
-            <TextBlock Text="1. Change file names (yyyy-MM-dd #.*)" />
-            <StackPanel Orientation="Vertical"
-                        Margin="25,10,10,25">
+            <TextBlock Classes="ConvertStep" 
+                       Text="1. Change file names (yyyy-MM-dd #.*)" />
+            <StackPanel Classes="ConvertButtonPanel"
+                        Orientation="Vertical">
                 <Button Content="Update File Names"
                         Command="{Binding Path=UpdateFileNamesCommand}"/>
             </StackPanel>
         
-            <TextBlock Text="2. Convert files to jpeg" />
+            <TextBlock Classes="ConvertStep"  
+                       Text="2. Convert files to jpeg" />
             
-            <TextBlock Text="3. Sort files into directories" />
+            <TextBlock Classes="ConvertStep" 
+                       Text="3. Sort files into directories" />
         
-            <TextBlock Text="4. Add Thumbnail_#.* files" />
+            <TextBlock Classes="ConvertStep" 
+                       Text="4. Add Thumbnail_#.* files" />
         
-            <TextBlock Text="5. Update picture dimensions" />
-            <StackPanel Orientation="Vertical"
-                        Margin="25,10,10,25">
+            <TextBlock Classes="ConvertStep" 
+                       Text="5. Update picture dimensions" />
+            <StackPanel Classes="ConvertButtonPanel"
+                        Orientation="Vertical">
                 <Button Content="Update Picture Dimensions (recursive)"
                         Command="{Binding Path=UpdatePictureDimensionsCommand}"/>
             </StackPanel>
