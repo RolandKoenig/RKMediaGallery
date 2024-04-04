@@ -15,7 +15,7 @@ public static class MediaGalleryConstants
     
     public const int HEIGHT_MARGIN = 400;
 
-    public static readonly string[] SUPPORTED_IMAGE_FORMATS = new string[] { ".jpg", ".jpeg", ".png", ".bmp", ".dat", ".JPG", ".JPEG", ".PNG", ".BMP" };
+    public static readonly string[] SUPPORTED_IMAGE_FORMATS = new string[] { ".jpg", ".jpeg", ".png", ".bmp" };
     // public static readonly string[] SUPPORTED_VIDEO_FORMATS = new string[] { ".mpg", ".mpeg", ".avi", ".wmv", ".mp4" };
     public const string BROWSING_SEARCH_PATTERN_THUMBNAIL = $"{THUMBNAIL_PREFIX}*.*";
     public const string THUMBNAIL_PREFIX = "Thumbnail";

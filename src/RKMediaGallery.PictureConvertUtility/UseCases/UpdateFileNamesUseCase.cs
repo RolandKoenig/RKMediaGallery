@@ -16,23 +16,21 @@ public class UpdateFileNamesUseCase
         IProgressViewService srvProgress,
         CancellationToken cancellationToken)
     {
+        var directory = await srvDirectoryDialog.ShowOpenDirectoryDialogAsync("Select directory");
+        if (string.IsNullOrEmpty(directory)) { return; }
+        
         srvProgress.NotifyActionStarted("Updating file names...");
         try
         {
-            var directory = await srvDirectoryDialog.ShowOpenDirectoryDialogAsync("Select directory");
-            if (string.IsNullOrEmpty(directory))
-            {
-                return;
-            }
-
             var allFiles = FileUtility.LoopOverFilesRecursively(directory)
-                .Where(x => MediaGalleryConstants.SUPPORTED_IMAGE_FORMATS.Contains(
+                .Where(x => MediaGalleryConstants.SUPPORTED_IMAGE_FORMATS_FOR_RENAME.Contains(
                     Path.GetExtension(x),
                     StringComparer.OrdinalIgnoreCase))
                 .ToList();
             for (var loop = 0; loop < allFiles.Count; loop++)
             {
                 if (cancellationToken.IsCancellationRequested) { break; }
+                srvProgress.NotifyActionProgress((int)(((double)loop / (double)allFiles.Count) * 100));
                 
                 var actFilePath = allFiles[loop];
 
@@ -55,8 +53,6 @@ public class UpdateFileNamesUseCase
                             actDirectory,
                             $"{actFileStringStr}{actExt}"));
                 });
-
-                srvProgress.NotifyActionProgress((int)(((double)loop / (double)allFiles.Count) * 100));
             }
         }
         finally

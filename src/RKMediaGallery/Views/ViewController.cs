@@ -38,7 +38,8 @@ public static class ViewController
                     return false;
                 }
 
-                return MediaGalleryConstants.SUPPORTED_IMAGE_FORMATS.Contains(actFileExtension,
+                return MediaGalleryConstants.SUPPORTED_IMAGE_FORMATS.Contains(
+                    actFileExtension,
                     StringComparer.OrdinalIgnoreCase);
             })
             .Order()

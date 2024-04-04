@@ -34,6 +34,8 @@ public partial class MainWindowViewModel : OwnViewModelBase
         var useCase = new UpdatePictureDimensionsUseCase();
 
         await useCase.UpdatePictureDimensionsAsync(
-            this.GetViewService<IOpenDirectoryViewService>());
+            this.GetViewService<IOpenDirectoryViewService>(),
+            this.GetViewService<IProgressViewService>(),
+            CancellationTokenUtil.CancelAfterViewDisconnected(this));
     }
 }
