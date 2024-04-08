@@ -29,10 +29,6 @@
                             Command="{Binding Path=NavigateToImageCommand}"
                             CommandParameter="{Binding}">
                         <Panel>
-                            <Panel.Effect>
-                                <DropShadowEffect Color="#AA000000" />
-                            </Panel.Effect>
-                            
                             <Image Source="{Binding Path=Bitmap}"
                                    Stretch="UniformToFill"/>
                         </Panel>
