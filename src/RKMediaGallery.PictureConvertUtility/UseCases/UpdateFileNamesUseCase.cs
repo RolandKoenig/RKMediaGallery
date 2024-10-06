@@ -44,14 +44,27 @@ public class UpdateFileNamesUseCase
 
                 var actFileStringStr = actFileCreationTime.ToString("yyyy-MM-dd_HH-mm-ss");
                 var actExt = Path.GetExtension(actFilePath);
+
+                var targetPath = Path.Combine(
+                    actDirectory,
+                    $"{actFileStringStr}{actExt}");
+                if(actFilePath.Equals(targetPath, StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                var tryNumber = 1;
+                while (File.Exists(targetPath))
+                {
+                    tryNumber++;
+                    targetPath = Path.Combine(
+                        actDirectory,
+                        $"{actFileStringStr}_{tryNumber}{actExt}");
+                }
                 
                 await Task.Run(() =>
                 {
-                    File.Move(
-                        actFilePath,
-                        Path.Combine(
-                            actDirectory,
-                            $"{actFileStringStr}{actExt}"));
+                    File.Move(actFilePath, targetPath);
                 });
             }
         }
