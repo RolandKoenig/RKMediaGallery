@@ -1,14 +1,12 @@
-<ext:MvvmUserControl xmlns="https://github.com/avaloniaui"
+<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:ext="https://github.com/RolandK.AvaloniaExtensions"
              xmlns:local="clr-namespace:RKMediaGallery.Views"
              xmlns:localUtil="clr-namespace:RKMediaGallery.Views.Navigation"
              xmlns:localBehaviors="clr-namespace:RKMediaGallery.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RKMediaGallery.Views.NavigationView"
-             ViewFor="{x:Type local:NavigationViewModel}"
              d:DataContext="{x:Static local:NavigationViewModel.EmptyViewModel}">
     <ScrollViewer x:Name="CtrlScrollViewer" 
                   HorizontalScrollBarVisibility="Visible"
@@ -30,4 +28,4 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
     </ScrollViewer>
-</ext:MvvmUserControl>
+</UserControl>

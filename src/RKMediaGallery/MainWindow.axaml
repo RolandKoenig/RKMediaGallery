@@ -1,4 +1,4 @@
-<ext:MvvmWindow xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,7 +10,6 @@
         x:Class="RKMediaGallery.MainWindow"
         x:DataType="local:MainWindowViewModel"
         d:DataContext="{x:Static local:MainWindowViewModel.EmptyViewModel}"
-        ViewFor="{x:Type local:MainWindowViewModel}"
         DataContext="{ext:CreateUsingDependencyInjection {x:Type local:MainWindowViewModel}}"
         Title="RolandK MediaGallery">
     
@@ -76,4 +75,4 @@
         </Panel.Background>
     </Panel>
     
-</ext:MvvmWindow>
+</Window>
