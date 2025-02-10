@@ -58,8 +58,8 @@ public class UpdatePictureDimensionsUseCase
                 await Task.Run(() =>
                 {
                     image.Resize(
-                        (int)(image.Width * resizePercentage),
-                        (int)(image.Height * resizePercentage));
+                        (uint)(image.Width * resizePercentage),
+                        (uint)(image.Height * resizePercentage));
                 }, cancellationToken);
 
                 await image.WriteAsync(actFilePath, cancellationToken);
