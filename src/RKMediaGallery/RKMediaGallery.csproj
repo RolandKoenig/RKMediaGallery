@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
+        <AssemblyName>RolandK MediaGallery</AssemblyName>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
@@ -29,12 +30,7 @@
     </ItemGroup>
     
     <ItemGroup>
-      <None Remove="Assets\Background.png" />
-      <AvaloniaResource Include="Assets\Background.png" />
-      <None Remove="Assets\IconBack.svg" />
-      <AvaloniaResource Include="Assets\IconBack.svg" />
-      <None Remove="Assets\IconExit.svg" />
-      <AvaloniaResource Include="Assets\IconExit.svg" />
+        <AvaloniaResource Include="Assets\*" />
     </ItemGroup>
     
     <ItemGroup>

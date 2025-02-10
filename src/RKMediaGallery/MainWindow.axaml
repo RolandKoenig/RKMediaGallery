@@ -12,7 +12,7 @@
         d:DataContext="{x:Static local:MainWindowViewModel.EmptyViewModel}"
         ViewFor="{x:Type local:MainWindowViewModel}"
         DataContext="{ext:CreateUsingDependencyInjection {x:Type local:MainWindowViewModel}}"
-        Title="RK MediaGallery">
+        Title="RolandK MediaGallery">
     
     <Panel>
         <controls:NavigationControl x:Name="CtrlNavigation" />
@@ -71,7 +71,7 @@
         </StackPanel>
         
         <Panel.Background>
-           <ImageBrush Source="avares://RKMediaGallery/Assets/Background.png"
+           <ImageBrush Source="avares://RolandK MediaGallery/Assets/Background.png"
                        Stretch="Fill"/> 
         </Panel.Background>
     </Panel>

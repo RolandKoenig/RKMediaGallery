@@ -9,7 +9,7 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>RK MediaGallery</string>
+	<string>RolandK MediaGallery</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.rolandk.rkmediagallery</string>
 	<key>CFBundlePackageType</key>
@@ -17,7 +17,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleExecutable</key>
-	<string>RKMediaGallery</string>
+	<string>RolandK MediaGallery</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>LSMinimumSystemVersion</key>

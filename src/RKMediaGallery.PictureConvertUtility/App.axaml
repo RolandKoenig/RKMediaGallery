@@ -1,7 +1,8 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RKMediaGallery.PictureConvertUtility.App"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Default"
+             Name="RolandK MediaGallery ConvertUtility">
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
