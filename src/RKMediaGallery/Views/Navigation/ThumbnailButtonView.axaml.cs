@@ -105,7 +105,7 @@ public partial class ThumbnailButtonView : MvvmUserControl
 
         this.UpdateCurrentImage();
 
-        DispatcherTimer refreshTimer = null;
+        DispatcherTimer? refreshTimer = null;
         refreshTimer = new DispatcherTimer(
             TimeSpan.FromSeconds(GetNextRandomInt(3, 6)),
             DispatcherPriority.Default,
