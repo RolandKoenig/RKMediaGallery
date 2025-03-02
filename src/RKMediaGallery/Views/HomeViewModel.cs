@@ -14,7 +14,7 @@ public partial class HomeViewModel : OwnViewModelBase, INavigationTarget
     public static readonly HomeViewModel EmptyViewModel = new();
     
     [ObservableProperty]
-    private string _mediaDirectory;
+    private string _mediaDirectory = string.Empty;
 
     [ObservableProperty]
     private bool _hasRecentlyOpened;
