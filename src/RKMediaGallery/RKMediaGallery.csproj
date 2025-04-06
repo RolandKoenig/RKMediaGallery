@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <AssemblyName>RolandK MediaGallery</AssemblyName>
@@ -8,12 +8,12 @@
     </PropertyGroup>
     
     <ItemGroup>        
-        <PackageReference Include="Avalonia" Version="11.2.5" />
+        <PackageReference Include="Avalonia" Version="11.2.6" />
         <PackageReference Include="Avalonia.Controls.PanAndZoom" Version="11.2.0" />
-        <PackageReference Include="Avalonia.Desktop" Version="11.2.5" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.6" />
         <PackageReference Include="Avalonia.Svg.Skia" Version="11.2.0.2" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.5" />
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.5" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.6" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.6" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
         <PackageReference Include="RolandK.AvaloniaExtensions" Version="11.2.5.2" />
         <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="11.2.5.2" />
@@ -24,7 +24,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.5" />
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.6" />
     </ItemGroup>
     
     <ItemGroup>
