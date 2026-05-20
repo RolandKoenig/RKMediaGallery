@@ -28,7 +28,7 @@ public partial class MainWindowViewModel : OwnViewModelBase
     private string _currentViewTitle = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(this.IsCurrentHistoryVisible))]
+    [NotifyPropertyChangedFor(nameof(IsCurrentHistoryVisible))]
     private string _currentHistoryDisplayText = string.Empty;
 
     public bool IsCurrentHistoryVisible => !string.IsNullOrEmpty(this.CurrentHistoryDisplayText);

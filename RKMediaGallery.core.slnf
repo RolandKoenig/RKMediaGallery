@@ -1,6 +1,6 @@
 {
   "solution": {
-    "path": "RKMediaGallery.sln",
+    "path": "RKMediaGallery.slnx",
     "projects": [
       "src\\RKMediaGallery.ExceptionViewer\\RKMediaGallery.ExceptionViewer.csproj",
       "src\\RKMediaGallery.PictureConvertUtility\\RKMediaGallery.PictureConvertUtility.csproj",
