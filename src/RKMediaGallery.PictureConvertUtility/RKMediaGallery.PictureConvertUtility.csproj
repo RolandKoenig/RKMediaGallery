@@ -12,7 +12,7 @@
         <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.4" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.4" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-        <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="14.13.1" />
+        <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="14.14.0" />
         <PackageReference Include="RolandK.AvaloniaExtensions" Version="12.0.4" />
         <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="12.0.4" />
         <PackageReference Include="RolandK.AvaloniaExtensions.ExceptionHandling" Version="12.0.4" />
