@@ -13,9 +13,9 @@
         <PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.1" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
         <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="14.16.0" />
-        <PackageReference Include="RolandK.AvaloniaExtensions" Version="12.1.0" />
-        <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="12.1.0" />
-        <PackageReference Include="RolandK.AvaloniaExtensions.ExceptionHandling" Version="12.1.0" />
+        <PackageReference Include="RolandK.AvaloniaExtensions" Version="12.1.1" />
+        <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="12.1.1" />
+        <PackageReference Include="RolandK.AvaloniaExtensions.ExceptionHandling" Version="12.1.1" />
     </ItemGroup>
     
     <ItemGroup>

@@ -19,9 +19,9 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-        <PackageReference Include="RolandK.AvaloniaExtensions" Version="12.1.0" />
-        <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="12.1.0" />
-        <PackageReference Include="RolandK.AvaloniaExtensions.ExceptionHandling" Version="12.1.0" />
+        <PackageReference Include="RolandK.AvaloniaExtensions" Version="12.1.1" />
+        <PackageReference Include="RolandK.AvaloniaExtensions.DependencyInjection" Version="12.1.1" />
+        <PackageReference Include="RolandK.AvaloniaExtensions.ExceptionHandling" Version="12.1.1" />
         <PackageReference Include="RolandK.InProcessMessaging" Version="1.0.3" />
         <PackageReference Include="Projektanker.Icons.Avalonia" Version="9.6.2" />
         <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="9.6.2" />
